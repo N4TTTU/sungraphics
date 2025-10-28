@@ -1,0 +1,67 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { proyectos } from "@/assets/data/proyectos.ts";
+
+// ✅ Genera todas las páginas según los slugs de tu API
+export async function getStaticPaths() {
+    return proyectos.map((p) => ({
+        params: { slug: String(p.slug) },
+        props: { proyecto: p },
+    }));
+}
+
+const { proyecto } = Astro.props as { proyecto: any };
+---
+
+<Layout>
+    <main class="mx-auto max-w-6xl px-4 py-10">
+        <!-- Breadcrumb -->
+
+        <div class="mt-6 pb-10 text-sm">
+            <a
+                href="/proyectos"
+                class="text-[#FD9800] font-semibold hover:underline"
+            >
+                ← Volver a proyectos
+            </a>
+        </div>
+
+        <!-- Encabezado -->
+        <header class="mb-6">
+            <h1 class="text-3xl font-semibold tracking-tight">
+                {proyecto.title}
+            </h1>
+            <p class="mt-2 text-gray-600">
+                {proyecto.client ? `${proyecto.client} · ` : ""}
+                {proyecto.category ?? "Proyecto"}
+                {proyecto.year ? ` · ${proyecto.year}` : ""}
+            </p>
+        </header>
+
+        <!-- Imagen principal -->
+        <section class="mb-8">
+            <img
+                src={proyecto.image}
+                alt={proyecto.title}
+                class="w-full rounded-2xl object-cover shadow-sm"
+                loading="eager"
+            />
+        </section>
+
+        <!-- Descripción -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-3">
+                Descripción del proyecto
+            </h2>
+            <p class="text-gray-700 leading-relaxed">{proyecto.description}</p>
+        </section>
+
+        <!-- Botones -->
+        <a
+            href="/contacto"
+            class="inline-flex items-center rounded-lg bg-[#FD9800] px-4 py-2 font-semibold text-white hover:opacity-90"
+        >
+            ¿Proyecto similar? Hablemos
+        </a>
+    </main>
+</Layout>

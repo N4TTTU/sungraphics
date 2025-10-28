@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { proyectos } from "@/assets/data/proyectos.ts";
+---
+
+<Layout>
+  <section class="mx-auto max-w-7xl px-4 py-10">
+    <h2 class="mb-6 text-2xl font-semibold text-gray-900">
+      Proyectos realizados
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        proyectos.map((p) => (
+          <figure class="group relative overflow-hidden rounded-2xl shadow-sm bg-white">
+            <img
+              src={p.image}
+              alt={p.title}
+              loading="lazy"
+              class="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            />
+
+            <div class="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+
+            <figcaption
+              class="absolute inset-x-2 bottom-2 rounded-lg bg-gray-800/80 px-3 py-2 text-[0.95rem] font-semibold text-white tracking-tight
+                   transition-opacity duration-200 group-hover:opacity-0"
+            >
+              {p.title}
+            </figcaption>
+
+            <a
+              href={`/proyectos/${p.slug}`}
+              class="absolute inset-0"
+              aria-label={`Ver proyecto ${p.title}`}
+            />
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

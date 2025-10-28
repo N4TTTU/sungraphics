@@ -1,0 +1,46 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import type { Servicio } from "@/assets/data/servicios";
+import { servicios } from "@/assets/data/servicios";
+
+// 👇 Astro necesita esto para rutas dinámicas al prerender
+export async function getStaticPaths() {
+    return servicios.map((s) => ({
+        params: { slug: s.slug }, // /servicios/<slug>
+        props: { servicio: s }, // pasa el servicio como prop
+    }));
+}
+
+// Recibe la prop arriba
+const { servicio } = Astro.props as { servicio: Servicio };
+---
+
+<Layout>
+    <!-- Contenido de la página del servicio -->
+    <section class="container mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold mb-4">{servicio.titulo}</h1>
+        {
+            servicio.descripcion && (
+                <p class="text-gray-600 mb-8">{servicio.descripcion}</p>
+            )
+        }
+
+        {
+            servicio.galeria.length > 0 && (
+                <section class="mb-12">
+                    <h2 class="text-2xl font-semibold mb-4">Galería</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        {servicio.galeria.map((img: string, i: number) => (
+                            <img
+                                src={img}
+                                alt={`${servicio.titulo} ${i + 1}`}
+                                class="rounded-xl shadow-sm hover:shadow-lg transition-transform duration-300 hover:scale-105"
+                                loading="lazy"
+                            />
+                        ))}
+                    </div>
+                </section>
+            )
+        }
+    </section>
+</Layout>

@@ -1,0 +1,66 @@
+---
+type Item = { src: string; alt: string; href?: string };
+const items: Item[] = [
+    { src: "/img/proyectos/Ansaldo.webp", alt: "Cliente 1" },
+    { src: "/images/logos/cliente2.png", alt: "Cliente 2" },
+    { src: "/images/logos/cliente3.png", alt: "Cliente 3" },
+    { src: "/images/logos/cliente4.png", alt: "Cliente 4" },
+];
+---
+
+<section aria-label="Carrusel de logos" class="w-full">
+    <div class="relative w-full overflow-hidden bg-white">
+        <!-- Velos laterales opcionales -->
+        <div
+            class="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent"
+        >
+        </div>
+        <div
+            class="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent"
+        >
+        </div>
+
+        <!-- PISTA ANIMADA -->
+        <div
+            class="ticker-track flex whitespace-nowrap animate-marquee will-change-transform"
+        >
+            <!-- Primer grupo -->
+            <div class="flex items-center shrink-0">
+                {
+                    items.map((it) => (
+                        <span class="mx-6 shrink-0 flex items-center opacity-80 hover:opacity-100 transition-opacity">
+                            <img
+                                src={it.src}
+                                alt={it.alt}
+                                loading="lazy"
+                                class="h-12 md:h-14 w-auto object-contain"
+                            />
+                        </span>
+                    ))
+                }
+            </div>
+
+            <!-- Segundo grupo (duplicado) -->
+            <div class="flex items-center shrink-0" aria-hidden="true">
+                {
+                    items.map((it) => (
+                        <span class="mx-6 shrink-0 flex items-center opacity-80 hover:opacity-100 transition-opacity">
+                            <img
+                                src={it.src}
+                                alt={it.alt}
+                                loading="lazy"
+                                class="h-12 md:h-14 w-auto object-contain"
+                            />
+                        </span>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    .ticker-track:hover {
+        animation-play-state: paused;
+    }
+</style>

@@ -1,0 +1,59 @@
+---
+// No requiere props para el ejemplo. Puedes pasarle un array de mensajes si quieres.
+const messages = [
+    "Envío Gratis por compras superiores a $55.000",
+    "Todos los precios incluyen IVA",
+    "Todos los productos son personalizados",
+];
+---
+
+<section class="w-full border-t border-gray-200">
+    <div class="group relative w-full overflow-hidden bg-white text-gray-800">
+        <div
+            class="flex whitespace-nowrap [animation:marquee_20s_linear_infinite] group-hover:[animation-play-state:paused]"
+        >
+            <span class="inline-flex items-center px-6 py-3"
+                >Envío Gratis por compras superiores a $55.000<span
+                    class="mx-4 opacity-40">•</span
+                ></span
+            >
+            <span class="inline-flex items-center px-6 py-3"
+                >Todos los precios incluyen IVA<span class="mx-4 opacity-40"
+                    >•</span
+                ></span
+            >
+            <span class="inline-flex items-center px-6 py-3"
+                >Todos los productos son personalizados<span
+                    class="mx-4 opacity-40">•</span
+                ></span
+            >
+            <!-- Duplicado para loop continuo -->
+            <span class="inline-flex items-center px-6 py-3" aria-hidden="true"
+                >Envío Gratis por compras superiores a $55.000<span
+                    class="mx-4 opacity-40">•</span
+                ></span
+            >
+            <span class="inline-flex items-center px-6 py-3" aria-hidden="true"
+                >Todos los precios incluyen IVA<span class="mx-4 opacity-40"
+                    >•</span
+                ></span
+            >
+            <span class="inline-flex items-center px-6 py-3" aria-hidden="true"
+                >Todos los productos son personalizados<span
+                    class="mx-4 opacity-40">•</span
+                ></span
+            >
+        </div>
+    </div>
+</section>
+
+<style is:global>
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style>

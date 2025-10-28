@@ -1,13 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "aos/dist/aos.css";
-import SandraLillo from "../assets/img/SandraLillo.webp";
-import HandIcon from "../assets/icon/handicon.svg";
-import HeadIcon from "../assets/icon/headicon.svg";
-import BusIcon from "../assets/icon/busicon.svg";
-import StarIcon from "../assets/icon/staricon.svg";
-import Colaboradores from "../assets/img/Colaboradores.svg";
-import UsIcon from "../assets/icon/usicon.svg";
+import Ticker from "../components/Ticker.astro";
+import TickerImages from "../components/TickerImages.astro";
 ---
 
 <Layout>
@@ -15,327 +10,252 @@ import UsIcon from "../assets/icon/usicon.svg";
         <meta charset="UTF-8" />
     </head>
 
-    <!-- COMUNICACION PROVEEDORES DINAMISMO RELACIONES -->
-    <section>
-        <div class="text-center">
-            <h3 class="uppercase tx-enun sm:tx-enun-sm text-[#515151] pt-10">
-                Nosotros
-            </h3>
-            <p class="text-[#FD9800] tx-s">
-                Nos sustentamos en cuatro pilares fundamentales:
-            </p>
-        </div>
-
-        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 items-start gap-2">
-                <a
-                    class="lg:min-h-[400px] sm:min-h-[300px] group flex flex-col items-center hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 rounded-xl p-6 md:p-7"
-                    href="#"
-                >
-                    <div
-                        class="flex justify-center items-center size-12 rounded-xl"
-                    >
-                        <img src={HeadIcon} alt="" />
-                    </div>
-                    <div class="mt-5">
-                        <h3
-                            class="group-hover:text-[#515151] text-[30px] text-center font-semibold text-[#515151]"
-                        >
-                            Comunicación
-                        </h3>
-                        <p class="mt-1 text-gray-600 text-center">
-                            La primordial con respecto a las personas y con
-                            respecto a todas las organizaciones con las cuales
-                            nos relacionemos. Se concentra en estar informados
-                            adecuadamente para asegurar el trabajo en equipo.
-                        </p>
-                    </div>
-                </a>
-
-                <a
-                    class="lg:min-h-[400px] sm:min-h-[300px] group flex flex-col items-center hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 rounded-xl p-6 md:p-7"
-                    href="#"
-                >
-                    <div
-                        class="flex justify-center items-center size-12 rounded-xl"
-                    >
-                        <img src={BusIcon} alt="" />
-                    </div>
-                    <div class="mt-5">
-                        <h3
-                            class="group-hover:text-gray-600 text-[30px] text-center font-semibold text-[#515151]"
-                        >
-                            Proveedores
-                        </h3>
-                        <p class="mt-1 text-gray-600 text-center">
-                            Nuestro equipo siempre agradable con nuestros
-                            proveedores, nuestra forma de trabajo que hace
-                            concluir nuestros compromisos oportunamente y el
-                            respaldo del tiempo en este rubro, nos ha
-                            diferenciado de nuestra competencia.
-                        </p>
-                    </div>
-                </a>
-                <a
-                    class="lg:min-h-[400px] sm:min-h-[300px] group flex flex-col items-center hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 rounded-xl p-6 md:p-7"
-                    href="#"
-                >
-                    <div
-                        class="flex justify-center items-center size-12 rounded-xl"
-                    >
-                        <img src={StarIcon} alt="" />
-                    </div>
-                    <div class="mt-5">
-                        <h3
-                            class="group-hover:text-[#515151] text-[30px] text-center font-semibold text-[#515151]"
-                        >
-                            Dinamismo
-                        </h3>
-                        <p class="mt-1 text-gray-600 text-center">
-                            Capacidad y flexibilidad con respecto a la
-                            adaptación a los cambios. Esta estrategia laboral es
-                            adecuada a los requerimientos de nuestros clientes y
-                            a los desafíos económicos y tecnológicos.
-                        </p>
-                    </div>
-                </a>
-                <a
-                    class="lg:min-h-[400px] sm:min-h-[300px] group flex flex-col items-center hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 rounded-xl p-6 md:p-7"
-                    href="#"
-                >
-                    <div
-                        class="flex justify-center items-center size-12 rounded-xl"
-                    >
-                        <img src={HandIcon} alt="" />
-                    </div>
-                    <div class="mt-5">
-                        <h3
-                            class="group-hover:text-gray-600 text-[30px] text-center font-semibold text-[#515151]"
-                        >
-                            Relaciones
-                        </h3>
-                        <p class="mt-1 text-[#515151] text-center">
-                            Generar confianza y compromiso en todos los aspectos
-                            que se relacionen con nuestra moral ética
-                            empresarial
-                        </p>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <!-- TRAYECTORIA -->
-        <section>
-            <div
-                class="max-w-[1250px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto"
+    <section
+        class="relative w-full flex items-center justify-center bg-center bg-cover p-60"
+        style="background-image: url('/img/Sungraphics.webp');"
+    >
+        <div
+            class="absolute inset-0 bg-black/70 text-white flex flex-col items-center justify-center gap-4"
+        >
+            <h1
+                class="text-8xl"
+                data-aos="zoom-in"
+                data-aos-delay="250"
+                data-aos-duration="2000"
             >
-                <div class="relative p-6 md:p-16">
-                    <!-- Grid -->
-                    <div
-                        class="relative z-10 lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center"
+                SUNGRAPHICS.CL
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="1500">
+                Gigantografías, letreros, adhesivos y soluciones personalizadas.
+            </p>
+            <a
+                href="#servicios"
+                data-aos="fade-up"
+                data-aos-delay="1500"
+                class="inline-block px-8 py-3 font-semibold text-white uppercase bg-[#FD9800] border-2 border-[#FD9800] rounded-full hover:bg-white hover:text-[#FD9800] transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] transform hover:scale-[1.03] active:scale-[0.98]"
+            >
+                Ver servicios
+            </a>
+        </div>
+    </section>
+
+    <section class="w-full bg-[#FD9800]">
+        <nav
+            aria-label="Categorías"
+            class="mx-auto max-w-7xl h-14 px-4 flex items-center gap-6 overflow-x-auto md:justify-between"
+        >
+            <!-- Item -->
+            <a
+                href="#gigantografias"
+                class="relative inline-flex items-center text-white uppercase font-extrabold tracking-wide
+             text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
+             hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
+            >
+                Gigantografías
+            </a>
+
+            <span class="hidden md:block h-6 w-px bg-white/40"></span>
+
+            <a
+                href="#grabados"
+                class="relative inline-flex items-center text-white uppercase font-extrabold tracking-wide
+             text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
+             hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
+            >
+                Grabados
+            </a>
+
+            <span class="hidden md:block h-6 w-px bg-white/40"></span>
+
+            <a
+                href="#letreros"
+                class="relative inline-flex items-center text-white uppercase font-extrabold tracking-wide
+             text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
+             hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
+            >
+                Letreros
+            </a>
+
+            <span class="hidden md:block h-6 w-px bg-white/40"></span>
+
+            <a
+                href="#adhesivos"
+                class="relative inline-flex items-center text-white uppercase font-extrabold tracking-wide
+             text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
+             hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
+            >
+                Adhesivos
+            </a>
+
+            <span class="hidden md:block h-6 w-px bg-white/40"></span>
+
+            <a
+                href="#accesorios"
+                class="relative inline-flex items-center text-white uppercase font-extrabold tracking-wide
+             text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
+             hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
+            >
+                Accesorios
+            </a>
+        </nav>
+    </section>
+
+    <!-- SECTION 1 · Imagen + Texto -->
+    <section id="sobre-sungraphics" class="relative w-full bg-white">
+        <div
+            class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+        >
+            <!-- Imagen/Ilustración -->
+            <figure data-aos="fade-right" class="order-1 lg:order-none">
+                <!-- Reemplaza el src por tu ilustración -->
+                <img
+                    src="/img/Sungraphics-2.webp"
+                    alt="Diseño e impresión: herramientas y piezas gráficas Sungraphics"
+                    class="w-full h-auto"
+                    loading="lazy"
+                />
+            </figure>
+
+            <!-- Texto -->
+            <div data-aos="fade-left" class="space-y-5">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111827]">
+                    Comunicación visual profesional
+                </h2>
+
+                <p
+                    class="text-[15px] sm:text-base leading-relaxed text-gray-700"
+                >
+                    <strong>Sungraphics</strong> es una empresa integral dedicada
+                    a la
+                    <strong>comunicación visual</strong>. Nuestro equipo está
+                    formado por profesionales con amplia experiencia en
+                    <strong>diseño, marketing y comunicaciones</strong>,
+                    comprometidos con ofrecer soluciones creativas y efectivas.
+                </p>
+
+                <p
+                    class="text-[15px] sm:text-base leading-relaxed text-gray-700"
+                >
+                    Contamos con <strong>tecnología de vanguardia</strong> y las
+                    capacidades necesarias para responder a las necesidades de cada
+                    cliente y a las exigencias del mercado actual.
+                </p>
+
+                <p
+                    class="text-[15px] sm:text-base leading-relaxed text-[#FD9800]"
+                >
+                    Desde <strong>1993</strong>, ayudamos a empresas a renovar,
+                    fortalecer o crear su imagen con piezas gráficas de alto
+                    impacto.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="merch-catalogos" class="w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 w-full">
+            <!-- Lado izquierdo: naranja -->
+            <div
+                data-aos="fade-up"
+                class="bg-[#FD9800] text-white px-6 sm:px-10 py-10 sm:py-14 flex items-center justify-center"
+            >
+                <div class="text-center md:text-left" data-aos="fade-up">
+                    <h2
+                        class="uppercase font-extrabold leading-[1.05] tracking-tight
+                 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
                     >
-                        <div
-                            class="mb-10 lg:mb-0 lg:col-span-6 lg:col-start-8 lg:order-2"
+                        Merchandising<br />
+                        <span
+                            class="underline underline-offset-6 decoration-white/80"
                         >
-                            <h2
-                                class="lg:text-3xl base:text-2xl sm:text-lg sm:font-normal text-gray-800 font-bold"
-                            >
-                                Con casi 30 años en el rubro de la comunicación
-                                visual, Sungraphics se ha posicionado como una
-                                empresa líder en el mercado gracias a su
-                                constante innovación, calidad y excelentes
-                                materias primas. Sus clientes los reconocen por
-                                su gran creatividad y un equipo de profesionales
-                                que saben atenderlos y asesorarlos para
-                                cualquier tipo de proyectos.
-                            </h2>
-                        </div>
+                            y Catálogos
+                        </span>
+                    </h2>
 
-                        <div class="lg:col-span-6">
-                            <div class="relative">
-                                <div>
-                                    <div
-                                        id="tabs-with-card-1"
-                                        role="tabpanel"
-                                        aria-labelledby="tabs-with-card-item-1"
-                                    >
-                                        <img
-                                            class="shadow-xl shadow-gray-200 rounded-xl"
-                                            src={SandraLillo}
-                                            alt="Features Image"
-                                        />
-                                    </div>
-                                </div>
-                                <div
-                                    class="hidden absolute top-0 end-0 translate-x-20 md:block lg:translate-x-20"
-                                >
-                                    <svg
-                                        class="w-16 h-auto text-orange-500"
-                                        width="121"
-                                        height="135"
-                                        viewBox="0 0 121 135"
-                                        fill="none"
-                                    >
-                                        <path
-                                            d="M5 16.4754C11.7688 27.4499 21.2452 57.3224 5 89.0164"
-                                            stroke="currentColor"
-                                            stroke-width="10"
-                                            stroke-linecap="round"></path>
-                                        <path
-                                            d="M33.6761 112.104C44.6984 98.1239 74.2618 57.6776 83.4821 5"
-                                            stroke="currentColor"
-                                            stroke-width="10"
-                                            stroke-linecap="round"></path>
-                                        <path
-                                            d="M50.5525 130C68.2064 127.495 110.731 117.541 116 78.0874"
-                                            stroke="currentColor"
-                                            stroke-width="10"
-                                            stroke-linecap="round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- (Opcional) subtítulo, si lo quieres como en el diseño -->
+                    <!--
+        <p class="mt-4 text-white/90 text-sm sm:text-base max-w-xl">
+          Piezas personalizadas para tu marca: impresión, acabados y formatos a la medida.
+        </p>
+        -->
                 </div>
-
-                <!-- End TRAYECTORIA -->
             </div>
 
-            <section>
-                <!-- Clients -->
+            <!-- Lado derecho: gris oscuro -->
+            <div
+                class="bg-[#2F343A] text-white px-6 sm:px-10 py-10 sm:py-14 flex items-center justify-center"
+            >
                 <div
-                    class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto"
+                    class="max-w-md text-center md:text-left"
+                    data-aos="fade-left"
                 >
-                    <!-- Title -->
-                    <div class="sm:w-1/2 xl:w-1/3 mx-auto text-center mb-6">
-                        <h2
-                            class="tx-enun sm:tx-enun-sm md:leading-tight text-[#515151]"
-                        >
-                            Nuestros colaboradores
-                        </h2>
-                    </div>
-                    <!-- End Title -->
+                    <h3 class="text-lg sm:text-xl font-extrabold uppercase">
+                        Personaliza tu merch
+                    </h3>
+                    <p class="mt-2 text-white/80 text-sm sm:text-base">
+                        Descubre una amplia variedad de productos que puedes
+                        adaptar a tu estilo o marca.
+                    </p>
 
-                    <!-- Grid -->
-                    <div
-                        class="my-8 md:my-16 grid grid-cols-3 sm:flex sm:justify-center gap-6 sm:gap-x-12 lg:gap-x-20"
-                    >
+                    <div class="mt-6">
                         <a
-                            class="shrink-0 transition hover:-translate-y-1"
-                            href="#"
+                            href="#portafolio"
+                            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#FD9800] font-semibold uppercase border-2 border-white transition-[transform,background-color,color,border] duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] transform hover:scale-[1.03] active:scale-[0.98] hover:bg-transparent hover:text-white"
                         >
-                            <img
-                                class="w-[80%] h-auto m-auto grayscale opacity-60 hover:opacity-100"
-                                src={Colaboradores}
-                                alt="Colaborador 1"
-                            />
+                            Hazlo a tu pinta
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
                         </a>
                     </div>
-                    <!-- End Grid -->
                 </div>
-                <!-- End Clients -->
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <section class="pb-[100px]">
-                <div>
-                    <div class="text-center">
-                        <h2
-                            class="uppercase tx-enun sm:tx-enun-sm text-[#515151] pt-10"
-                        >
-                            Nuestro equipo
-                        </h2>
-                        <p
-                            class="text-[#515151] tx-s sm:max-w-[950px] text-center mx-auto pb-10"
-                        >
-                            Somos un equipo de profesionales que disfrutamos lo
-                            que hacemos. Cada proyecto es un desafío para
-                            brindar la mejor experiencia a nuestros clientes.
-                        </p>
-                    </div>
+    <section>
+        <p>Hacemos visibles tus ideas.</p>
+    </section>
 
-                    <div
-                        class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto"
-                    >
-                        <div class="max-w-4xl mx-auto">
-                            <!-- Grid -->
-                            <div class="grid md:grid-cols-2 gap-6 lg:gap-12">
-                                <div class="space-y-6 lg:space-y-10">
-                                    <div class="flex gap-x-5 sm:gap-x-8">
-                                        <img src={UsIcon} alt="" />
-                                        <div class="grow">
-                                            <h2
-                                                class="tx-m sm:text-lg font-semibold text-[#515151]"
-                                            >
-                                                Sandra lillo
-                                            </h2>
-                                            <p class="mt-1 text-gray-600">
-                                                Directora de arte <br />
-                                                Instituto AIEP de Valparaiso 2020/2025
-                                            </p>
-                                        </div>
-                                    </div>
+    <Ticker />
 
-                                    <div class="flex gap-x-5 sm:gap-x-8">
-                                        <img src={UsIcon} alt="" />
-                                        <div class="grow">
-                                            <h2
-                                                class="tx-m sm:text-lg font-semibold text-[#515151]"
-                                            >
-                                                Enzo Pechunante
-                                            </h2>
-                                            <p class="mt-1 text-gray-600">
-                                                Diseñador gráfico <br />
-                                                Instituto AIEP de Valparaiso 2020/2025
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Col -->
+    <TickerImages />
 
-                                <div class="space-y-6 lg:space-y-10">
-                                    <!-- Icon Block -->
-
-                                    <div class="flex gap-x-5 sm:gap-x-8">
-                                        <img src={UsIcon} alt="" />
-                                        <div class="grow">
-                                            <h2
-                                                class="tx-m sm:text-lg font-semibold text-[#515151]"
-                                            >
-                                                Franchesco Totti
-                                            </h2>
-                                            <p class="mt-1 text-gray-600">
-                                                Diseñador gráfico <br />
-                                                Instituto AIEP de Valparaiso 2020/2025
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex gap-x-5 sm:gap-x-8">
-                                        <img src={UsIcon} alt="" />
-                                        <div class="grow">
-                                            <h2
-                                                class="tx-m sm:text-lg font-semibold text-[#515151]"
-                                            >
-                                                Paula di marco
-                                            </h2>
-                                            <p class="mt-1 text-gray-600">
-                                                Directora de arte <br />
-                                                Instituto AIEP de Valparaiso 2020/2025
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <!-- End Icon Block -->
-
-                                    <!-- End Icon Block -->
-                                </div>
-                                <!-- End Col -->
-                            </div>
-                            <!-- End Grid -->
-                        </div>
-                    </div>
-                    <!-- End Icon Blocks -->
-                </div>
-            </section>
-        </section>
-    </section></Layout
->
+    <!-- 
+    <section>
+        <div>
+            <div>
+                <img src="" alt="" />
+            </div>
+            <div>
+                <p>
+                    Sungraphics es una empresa integral dedicada a la
+                    comunicación visual. Nuestro equipo está formado por
+                    profesionales con amplia experiencia en diseño, marketing y
+                    comunicaciones, comprometidos con ofrecer soluciones
+                    creativas y efectivas. Contamos con tecnología de vanguardia
+                    y las capacidades necesarias para responder a las
+                    necesidades de cada cliente y a las exigencias del mercado
+                    actual.
+                </p>
+                <p>
+                    Desde 1993, en Sungraphics nos dedicamos con compromiso y
+                    pasión a la comunicación visual. Ayudamos a las empresas a
+                    renovar, fortalecer o crear su imagen, ofreciendo soluciones
+                    modernas y efectivas que reflejan su identidad y potencian
+                    su presencia en el mercado.
+                </p>
+            </div>
+        </div>
+    </section> -->
+</Layout>
