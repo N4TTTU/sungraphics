@@ -18,22 +18,22 @@ const { title, description, icon, href = "#" } = Astro.props;
 >
     <!-- ICONO -->
     <div
-        class="mb-4 flex justify-center items-center transition-transform duration-500 group-hover:scale-110"
+        class="pt-4 flex justify-center items-center transition-transform duration-500 group-hover:scale-110"
     >
         <img
             src={icon}
             alt={title}
-            class="w-12 h-12 transition-all duration-300 group-hover:brightness-110"
+            class="w-30 h-30 transition-all duration-300 group-hover:brightness-110"
         />
     </div>
 
     <!-- CONTENIDO -->
-    <div class="mt-5">
-        <h3 class="text-[26px] text-center font-bold text-slate-800 mt-5 mb-2">
+    <div class="mt-5 min-h-[350px]">
+        <h3 class="text-[30px] text-center font-bold text-slate-800 mt-5 mb-2">
             {title}
         </h3>
 
-        <p class="text-slate-600 text-center text-sm leading-relaxed">
+        <p class="text-slate-600 text-center text-[17px] leading-relaxed">
             {description}
         </p>
     </div>
