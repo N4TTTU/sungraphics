@@ -1,8 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import "aos/dist/aos.css";
-import Ticker from "../components/Ticker.astro";
-import TickerImages from "../components/TickerImages.astro";
+import Hero from "@/components/Inicio/Hero.astro";
+import Us from "@/components/Inicio/Us.astro";
+import Merch from "@/components/Inicio/Merch.astro";
+import Branding from "@/components/Inicio/Branding.astro";
+import Servicios from "@/components/Inicio/Servicios.astro";
+import Ticker from "@/components/Ticker.astro";
+import ContactoInicio from "@/components/Inicio/ContactoInicio.astro";
+// import CardDestacado from "../components/CardDestacado.astro";
 ---
 
 <Layout>
@@ -10,252 +15,29 @@ import TickerImages from "../components/TickerImages.astro";
         <meta charset="UTF-8" />
     </head>
 
-    <section
-        class="relative w-full flex items-center justify-center bg-center bg-cover p-60"
-        style="background-image: url('/img/Sungraphics.webp');"
-    >
-        <div
-            class="absolute inset-0 bg-black/70 text-white flex flex-col items-center justify-center gap-4"
-        >
-            <h1
-                class="text-8xl"
-                data-aos="zoom-in"
-                data-aos-delay="250"
-                data-aos-duration="2000"
-            >
-                SUNGRAPHICS.CL
-            </h1>
-            <p data-aos="fade-up" data-aos-delay="1500">
-                Gigantografías, letreros, adhesivos y soluciones personalizadas.
-            </p>
-            <a
-                href="#servicios"
-                data-aos="fade-up"
-                data-aos-delay="1500"
-                class="inline-block px-8 py-3 font-semibold text-white uppercase bg-[#FD9800] border-2 border-[#FD9800] rounded-full hover:bg-white hover:text-[#FD9800] transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] transform hover:scale-[1.03] active:scale-[0.98]"
-            >
-                Ver servicios
-            </a>
-        </div>
-    </section>
+    <!-- HERO -->
+    <Hero />
 
-    <section class="w-full bg-[#FD9800]">
-        <nav
-            aria-label="Categorías"
-            class="mx-auto max-w-7xl h-14 px-4 flex items-center gap-6 overflow-x-auto md:justify-between"
-        >
-            <!-- Item -->
-            <a
-                href="#gigantografias"
-                class="relative inline-flex items-center text-white uppercase font-extrabold tracking-wide
-             text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
-             hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
-            >
-                Gigantografías
-            </a>
-
-            <span class="hidden md:block h-6 w-px bg-white/40"></span>
-
-            <a
-                href="#grabados"
-                class="relative inline-flex items-center text-white uppercase font-extrabold tracking-wide
-             text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
-             hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
-            >
-                Grabados
-            </a>
-
-            <span class="hidden md:block h-6 w-px bg-white/40"></span>
-
-            <a
-                href="#letreros"
-                class="relative inline-flex items-center text-white uppercase font-extrabold tracking-wide
-             text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
-             hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
-            >
-                Letreros
-            </a>
-
-            <span class="hidden md:block h-6 w-px bg-white/40"></span>
-
-            <a
-                href="#adhesivos"
-                class="relative inline-flex items-center text-white uppercase font-extrabold tracking-wide
-             text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
-             hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
-            >
-                Adhesivos
-            </a>
-
-            <span class="hidden md:block h-6 w-px bg-white/40"></span>
-
-            <a
-                href="#accesorios"
-                class="relative inline-flex items-center text-white uppercase font-extrabold tracking-wide
-             text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]
-             hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
-            >
-                Accesorios
-            </a>
-        </nav>
-    </section>
+    <!-- SLIDE -->
+    <!-- <Ticker /> -->
 
     <!-- SECTION 1 · Imagen + Texto -->
-    <section id="sobre-sungraphics" class="relative w-full bg-white">
-        <div
-            class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
-        >
-            <!-- Imagen/Ilustración -->
-            <figure data-aos="fade-right" class="order-1 lg:order-none">
-                <!-- Reemplaza el src por tu ilustración -->
-                <img
-                    src="/img/Sungraphics-2.webp"
-                    alt="Diseño e impresión: herramientas y piezas gráficas Sungraphics"
-                    class="w-full h-auto"
-                    loading="lazy"
-                />
-            </figure>
+    <Us />
 
-            <!-- Texto -->
-            <div data-aos="fade-left" class="space-y-5">
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-[#111827]">
-                    Comunicación visual profesional
-                </h2>
+    <Merch />
 
-                <p
-                    class="text-[15px] sm:text-base leading-relaxed text-gray-700"
-                >
-                    <strong>Sungraphics</strong> es una empresa integral dedicada
-                    a la
-                    <strong>comunicación visual</strong>. Nuestro equipo está
-                    formado por profesionales con amplia experiencia en
-                    <strong>diseño, marketing y comunicaciones</strong>,
-                    comprometidos con ofrecer soluciones creativas y efectivas.
-                </p>
+    <Servicios />
 
-                <p
-                    class="text-[15px] sm:text-base leading-relaxed text-gray-700"
-                >
-                    Contamos con <strong>tecnología de vanguardia</strong> y las
-                    capacidades necesarias para responder a las necesidades de cada
-                    cliente y a las exigencias del mercado actual.
-                </p>
+    <Branding />
 
-                <p
-                    class="text-[15px] sm:text-base leading-relaxed text-[#FD9800]"
-                >
-                    Desde <strong>1993</strong>, ayudamos a empresas a renovar,
-                    fortalecer o crear su imagen con piezas gráficas de alto
-                    impacto.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="merch-catalogos" class="w-full">
-        <div class="grid grid-cols-1 md:grid-cols-2 w-full">
-            <!-- Lado izquierdo: naranja -->
-            <div
-                data-aos="fade-up"
-                class="bg-[#FD9800] text-white px-6 sm:px-10 py-10 sm:py-14 flex items-center justify-center"
-            >
-                <div class="text-center md:text-left" data-aos="fade-up">
-                    <h2
-                        class="uppercase font-extrabold leading-[1.05] tracking-tight
-                 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
-                    >
-                        Merchandising<br />
-                        <span
-                            class="underline underline-offset-6 decoration-white/80"
-                        >
-                            y Catálogos
-                        </span>
-                    </h2>
-
-                    <!-- (Opcional) subtítulo, si lo quieres como en el diseño -->
-                    <!--
-        <p class="mt-4 text-white/90 text-sm sm:text-base max-w-xl">
-          Piezas personalizadas para tu marca: impresión, acabados y formatos a la medida.
-        </p>
-        -->
-                </div>
-            </div>
-
-            <!-- Lado derecho: gris oscuro -->
-            <div
-                class="bg-[#2F343A] text-white px-6 sm:px-10 py-10 sm:py-14 flex items-center justify-center"
-            >
-                <div
-                    class="max-w-md text-center md:text-left"
-                    data-aos="fade-left"
-                >
-                    <h3 class="text-lg sm:text-xl font-extrabold uppercase">
-                        Personaliza tu merch
-                    </h3>
-                    <p class="mt-2 text-white/80 text-sm sm:text-base">
-                        Descubre una amplia variedad de productos que puedes
-                        adaptar a tu estilo o marca.
-                    </p>
-
-                    <div class="mt-6">
-                        <a
-                            href="#portafolio"
-                            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-[#FD9800] font-semibold uppercase border-2 border-white transition-[transform,background-color,color,border] duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] transform hover:scale-[1.03] active:scale-[0.98] hover:bg-transparent hover:text-white"
-                        >
-                            Hazlo a tu pinta
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <p>Hacemos visibles tus ideas.</p>
-    </section>
-
-    <Ticker />
-
-    <TickerImages />
-
-    <!-- 
-    <section>
-        <div>
-            <div>
-                <img src="" alt="" />
-            </div>
-            <div>
-                <p>
-                    Sungraphics es una empresa integral dedicada a la
-                    comunicación visual. Nuestro equipo está formado por
-                    profesionales con amplia experiencia en diseño, marketing y
-                    comunicaciones, comprometidos con ofrecer soluciones
-                    creativas y efectivas. Contamos con tecnología de vanguardia
-                    y las capacidades necesarias para responder a las
-                    necesidades de cada cliente y a las exigencias del mercado
-                    actual.
-                </p>
-                <p>
-                    Desde 1993, en Sungraphics nos dedicamos con compromiso y
-                    pasión a la comunicación visual. Ayudamos a las empresas a
-                    renovar, fortalecer o crear su imagen, ofreciendo soluciones
-                    modernas y efectivas que reflejan su identidad y potencian
-                    su presencia en el mercado.
-                </p>
-            </div>
-        </div>
+    <ContactoInicio>
+        <!-- <section class="py-10">
+        <CardDestacado
+            title="Noteworthy technology acquisitions 2021"
+            description="Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."
+            image="/img/SandraLillo.webp"
+            href="#"
+        />
     </section> -->
+    </ContactoInicio>
 </Layout>

@@ -1,59 +1,98 @@
 ---
-// No requiere props para el ejemplo. Puedes pasarle un array de mensajes si quieres.
-const messages = [
-    "Envío Gratis por compras superiores a $55.000",
-    "Todos los precios incluyen IVA",
-    "Todos los productos son personalizados",
+type NavItem = { href: string; label: string };
+
+const items: NavItem[] = [
+    { href: "#gigantografias", label: "Gigantografías" },
+    { href: "#grabados", label: "Grabados" },
+    { href: "#letreros", label: "Letreros" },
+    { href: "#adhesivos", label: "Adhesivos" },
+    { href: "#senaletica", label: "Señalética" },
+    { href: "#demarcaciones", label: "Demarcaciones" },
+    { href: "#oneWayVision", label: "One way vision" },
 ];
+
+const duration = "20s"; // velocidad
 ---
 
-<section class="w-full border-t border-gray-200">
-    <div class="group relative w-full overflow-hidden bg-white text-gray-800">
+<section class="w-full border-t border-gray-200 bg-[#FD9800]">
+    <!-- 👇 este contenedor detecta el hover de cualquier hijo (incluidos <a>) -->
+    <div class="ticker-group relative w-full overflow-hidden text-white">
+        <!-- fades laterales (no bloquean hover) -->
         <div
-            class="flex whitespace-nowrap [animation:marquee_20s_linear_infinite] group-hover:[animation-play-state:paused]"
+            class="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#FD9800] to-transparent"
         >
-            <span class="inline-flex items-center px-6 py-3"
-                >Envío Gratis por compras superiores a $55.000<span
-                    class="mx-4 opacity-40">•</span
-                ></span
+        </div>
+        <div
+            class="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#FD9800] to-transparent"
+        >
+        </div>
+
+        <!-- TRACK: se mueve y se pausa con hover de la ticker-group -->
+        <div
+            class="marquee-track flex w-max h-14 items-center whitespace-nowrap gap-0 will-change-transform group-hover:[animation-play-state:paused]"
+            style={`animation: marquee ${duration} linear infinite;`}
+        >
+            <!-- Copia 1 (solo padding izquierdo) -->
+            <nav class="flex items-center gap-6 h-14 flex-none pl-4 pr-0">
+                {
+                    items.map((i, idx) => (
+                        <span class="flex items-center">
+                            <a
+                                href={i.href}
+                                class="inline-flex items-center uppercase font-extrabold tracking-wide text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
+                            >
+                                {i.label}
+                            </a>
+                            {idx < items.length - 1 && (
+                                <span class="hidden md:block h-6 w-px bg-white/40 mx-6" />
+                            )}
+                        </span>
+                    ))
+                }
+            </nav>
+
+            <!-- Separador único entre copias -->
+            <span
+                class="hidden md:block h-6 w-px bg-white/40 mx-6 flex-none"
+                aria-hidden="true"></span>
+
+            <!-- Copia 2 (solo padding derecho) -->
+            <nav
+                class="flex items-center gap-6 h-14 flex-none pl-0 pr-4"
+                aria-hidden="true"
             >
-            <span class="inline-flex items-center px-6 py-3"
-                >Todos los precios incluyen IVA<span class="mx-4 opacity-40"
-                    >•</span
-                ></span
-            >
-            <span class="inline-flex items-center px-6 py-3"
-                >Todos los productos son personalizados<span
-                    class="mx-4 opacity-40">•</span
-                ></span
-            >
-            <!-- Duplicado para loop continuo -->
-            <span class="inline-flex items-center px-6 py-3" aria-hidden="true"
-                >Envío Gratis por compras superiores a $55.000<span
-                    class="mx-4 opacity-40">•</span
-                ></span
-            >
-            <span class="inline-flex items-center px-6 py-3" aria-hidden="true"
-                >Todos los precios incluyen IVA<span class="mx-4 opacity-40"
-                    >•</span
-                ></span
-            >
-            <span class="inline-flex items-center px-6 py-3" aria-hidden="true"
-                >Todos los productos son personalizados<span
-                    class="mx-4 opacity-40">•</span
-                ></span
-            >
+                {
+                    items.map((i, idx) => (
+                        <span class="flex items-center">
+                            <a
+                                href={i.href}
+                                class="inline-flex items-center uppercase font-extrabold tracking-wide text-lg md:text-2xl opacity-80 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] hover:opacity-100 hover:scale-[1.06] focus:opacity-100 focus:scale-[1.06] outline-none"
+                            >
+                                {i.label}
+                            </a>
+                            {idx < items.length - 1 && (
+                                <span class="hidden md:block h-6 w-px bg-white/40 mx-6" />
+                            )}
+                        </span>
+                    ))
+                }
+            </nav>
         </div>
     </div>
 </section>
 
 <style is:global>
     @keyframes marquee {
-        0% {
-            transform: translateX(0);
+        from {
+            transform: translate3d(0, 0, 0);
         }
-        100% {
-            transform: translateX(-50%);
-        }
+        to {
+            transform: translate3d(-50%, 0, 0);
+        } /* 2 copias => 200% */
+    }
+
+    /* Pausa garantizada cuando el mouse está sobre CUALQUIER hijo (links incluidos) */
+    .ticker-group:hover .marquee-track {
+        animation-play-state: paused;
     }
 </style>

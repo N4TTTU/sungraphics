@@ -1,0 +1,326 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { productosCatalogo } from "../../../assets/data/catalogo-productos";
+import type { ProductoCatalogo } from "../../../assets/data/catalogo-productos";
+
+export function getStaticPaths() {
+    return productosCatalogo.map((p) => ({
+        params: { categoria: p.categoria, slug: p.slug },
+        props: { producto: p },
+    }));
+}
+
+const { producto } = Astro.props as { producto: ProductoCatalogo };
+
+const relacionados = productosCatalogo
+    .filter(
+        (p) => p.categoria === producto.categoria && p.slug !== producto.slug,
+    )
+    .slice(0, 4); // máximo 4
+---
+
+<!-- aquí va toda la UI del detalle + variantes + formulario --><!-- (uso el archivo que ya te preparé, solo lo adapto cuando tú me pidas) -->
+<Layout title={producto.nombre}>
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4 space-y-10">
+            <!-- CABECERA -->
+            <header class="text-center space-y-2">
+                <p
+                    class="text-xs md:text-sm uppercase tracking-[0.25em] text-[#FD9800]"
+                >
+                    {producto.categoria.replace("-", " ").toUpperCase()}
+                </p>
+                <h1 class="text-3xl md:text-4xl font-bold text-[#515151]">
+                    {producto.nombre}
+                </h1>
+            </header>
+
+            <!-- GRID IMAGEN + OPCIONES -->
+            <div
+                class="grid gap-10
+               md:grid-cols-[1.4fr_1fr]
+               lg:grid-cols-[1.6fr_1fr]
+               items-start"
+            >
+                <!-- COLUMNA IZQUIERDA: IMAGEN -->
+                <div
+                    class="grid gap-10
+         md:grid-cols-2
+         items-start"
+                >
+                    <!-- COLUMNA IZQUIERDA: IMAGEN GRANDE -->
+                    <div class="flex justify-center md:justify-end">
+                        <img
+                            src={producto.imagen}
+                            alt={producto.nombre}
+                            class="w-auto pr-20
+    object-contain
+    h-[250px] /* móvil */
+    sm:h-[250px] /* tablet */
+    md:h-[250px] /* notebook */
+    lg:h-[320px] /* desktop grande (lo que quieres) */"
+                        />
+                    </div>
+
+                    <!-- COLUMNA DERECHA -->
+                    <div class="space-y-6">
+                        <!-- TAMAÑOS -->
+                        <div class="space-y-3">
+                            <p class="text-sm font-semibold text-[#515151]">
+                                Tamaños disponibles
+                            </p>
+
+                            <div
+                                class="flex flex-wrap gap-3"
+                                id="variantButtons"
+                            >
+                                {
+                                    producto.variantes.map((v) => (
+                                        <button
+                                            type="button"
+                                            class="variant-btn inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-2 text-sm font-medium text-[#515151] bg-white hover:border-[#FD9800] hover:text-[#FD9800] transition"
+                                            data-etiqueta={v.etiqueta}
+                                            data-codigo={v.codigo}
+                                            data-tamano={v.tamanoCm}
+                                        >
+                                            {v.etiqueta}
+                                        </button>
+                                    ))
+                                }
+                            </div>
+                        </div>
+
+                        <!-- COLORES -->
+                        {
+                            producto.colores && (
+                                <div class="space-y-3">
+                                    <p class="text-sm font-semibold text-[#515151]">
+                                        Colores disponibles
+                                    </p>
+
+                                    <div
+                                        class="flex flex-wrap gap-3"
+                                        id="colorButtons"
+                                    >
+                                        {producto.colores.map((c) => (
+                                            <button
+                                                type="button"
+                                                class="color-btn inline-flex items-center gap-2 rounded-full border border-gray-300 px-4 py-2 text-sm font-medium text-[#515151] bg-white hover:border-[#FD9800] transition"
+                                                data-id={c.id}
+                                                data-nombre={c.nombre}
+                                                data-hex={c.hex}
+                                            >
+                                                <span
+                                                    class="inline-block h-4 w-4 rounded-full border border-gray-300"
+                                                    style={`background-color: ${c.hex};`}
+                                                />
+                                                <span>{c.nombre}</span>
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )
+                        }
+                        <div class="space-y-2 flex flex-col">
+                            <label
+                                for="cantidad"
+                                class="text-sm font-semibold text-[#515151]"
+                            >
+                                Cantidad
+                            </label>
+                            <input
+                                id="cantidad"
+                                name="cantidad"
+                                type="text"
+                                inputmode="numeric"
+                                pattern="[1-9][0-9]{0,2}"
+                                placeholder="0"
+                                class="w-32 rounded-full border border-gray-300 px-4 py-2 text-sm text-[#515151] focus:border-[#FD9800] focus:outline-none"
+                            />
+                        </div>
+
+                        <!-- Tu formulario de cotizar va aquí, SOLO agregamos hidden nuevos -->
+                        <form
+                            id="formCotizacion"
+                            method="POST"
+                            action="https://tu-endpoint-aqui"
+                            class="space-y-4"
+                        >
+                            <!-- ...ampos visibles (nombre, correo, cantidad, detalles, etc.)... -->
+
+                            <!-- HIDDEN: tamaño y color seleccionados -->
+                            <input
+                                type="hidden"
+                                name="tamano_cm"
+                                id="inputTamano"
+                            />
+                            <input
+                                type="hidden"
+                                name="codigo_tamano"
+                                id="inputCodigoTamano"
+                            />
+
+                            <input
+                                type="hidden"
+                                name="color_id"
+                                id="inputColorId"
+                            />
+                            <input
+                                type="hidden"
+                                name="color_nombre"
+                                id="inputColorNombre"
+                            />
+                            <input
+                                type="hidden"
+                                name="color_hex"
+                                id="inputColorHex"
+                            />
+
+                            <input
+                                type="hidden"
+                                name="producto"
+                                value={producto.nombre}
+                            />
+                            <input
+                                type="hidden"
+                                name="categoria"
+                                value={producto.categoria}
+                            />
+
+                            <button
+                                id="btnEnviar"
+                                type="submit"
+                                disabled
+                                class="inline-flex items-center justify-center rounded-full bg-[#FD9800] px-10 py-3 text-sm font-semibold text-white shadow-md hover:bg-[#e48700] disabled:opacity-50 disabled:cursor-not-allowed transition"
+                            >
+                                Cotizar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const inputCantidad = document.querySelector("#cantidad");
+            const sizeButtons = document.querySelectorAll(".variant-btn");
+            const colorButtons = document.querySelectorAll(".color-btn");
+
+            const inputTamano = document.querySelector("#inputTamano");
+            const inputCodigoTamano =
+                document.querySelector("#inputCodigoTamano");
+
+            const inputColorId = document.querySelector("#inputColorId");
+            const inputColorNombre =
+                document.querySelector("#inputColorNombre");
+            const inputColorHex = document.querySelector("#inputColorHex");
+
+            const btnEnviar = document.querySelector("#btnEnviar");
+
+            let tamanoSeleccionado = false;
+            let colorSeleccionado = colorButtons.length === 0;
+            let cantidadValida = false;
+
+            function actualizarEstadoBoton() {
+                btnEnviar.disabled = !(
+                    tamanoSeleccionado &&
+                    colorSeleccionado &&
+                    cantidadValida
+                );
+            }
+
+            sizeButtons.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    sizeButtons.forEach((b) =>
+                        b.classList.remove(
+                            "bg-[#FD9800]",
+                            "text-white",
+                            "border-[#FD9800]",
+                        ),
+                    );
+                    btn.classList.add(
+                        "bg-[#FD9800]",
+                        "text-white",
+                        "border-[#FD9800]",
+                    );
+
+                    const tamano = btn.dataset.tamano || "";
+                    const codigo = btn.dataset.codigo || "";
+                    inputTamano.value = tamano;
+                    inputCodigoTamano.value = codigo;
+                    tamanoSeleccionado = true;
+                    actualizarEstadoBoton();
+
+                    inputCantidad?.addEventListener("input", () => {
+                        const valor = parseInt(inputCantidad.value, 10);
+
+                        // válida solo si es número y está entre 1 y 999
+                        cantidadValida =
+                            Number.isInteger(valor) &&
+                            valor >= 1 &&
+                            valor <= 999;
+
+                        actualizarEstadoBoton();
+                    });
+                });
+            });
+
+            colorButtons.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    colorButtons.forEach((b) =>
+                        b.classList.remove(
+                            "bg-[#FD9800]",
+                            "text-white",
+                            "border-[#FD9800]",
+                        ),
+                    );
+                    btn.classList.add(
+                        "bg-[#FD9800]",
+                        "text-white",
+                        "border-[#FD9800]",
+                    );
+
+                    inputColorId.value = btn.dataset.id || "";
+                    inputColorNombre.value = btn.dataset.nombre || "";
+                    inputColorHex.value = btn.dataset.hex || "";
+
+                    colorSeleccionado = true;
+                    actualizarEstadoBoton();
+                });
+            });
+
+            actualizarEstadoBoton();
+        </script>
+    </section>
+
+    {
+        relacionados.length > 0 && (
+            <div class="mt-16 border-t border-gray-200 pt-10 pb-20 px-20">
+                <h2 class="text-xl md:text-2xl font-bold text-[#515151] mb-6">
+                    Productos relacionados
+                </h2>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    {relacionados.map((p) => (
+                        <a
+                            href={`/catalogo/${p.categoria}/${p.slug}`}
+                            class="group block bg-white border border-gray-200 rounded-xl shadow-sm hover:border-[#FD9800] hover:shadow-lg transition overflow-hidden"
+                        >
+                            <div class="p-4 flex justify-center">
+                                <img
+                                    src={p.imagen}
+                                    alt={p.nombre}
+                                    class="h-28 sm:h-32 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                />
+                            </div>
+                            <div class="px-4 pb-4 text-center">
+                                <p class="text-xs sm:text-sm font-semibold text-[#515151] group-hover:text-[#FD9800] transition">
+                                    {p.nombre}
+                                </p>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        )
+    }
+</Layout>

@@ -1,0 +1,67 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { productosCatalogo } from "../../../assets/data/catalogo-productos";
+import { categoriasCatalogo } from "../../../assets/data/catalogo-categorias";
+
+export function getStaticPaths() {
+    const categorias = [...new Set(productosCatalogo.map((p) => p.categoria))];
+
+    return categorias.map((c) => ({
+        params: { categoria: c },
+        props: { categoria: c },
+    }));
+}
+
+const { categoria } = Astro.props;
+const categoriaInfo = categoriasCatalogo.find((c) => c.slug === categoria);
+
+// Productos de esta categoría
+const productos = productosCatalogo.filter((p) => p.categoria === categoria);
+---
+
+<Layout title={categoriaInfo?.nombre || "Catálogo"}>
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 space-y-12">
+            <!-- Título -->
+            <header class="text-center space-y-2">
+                <h1
+                    class="text-3xl md:text-4xl font-bold text-[#515151] uppercase tracking-wide"
+                >
+                    {categoriaInfo?.nombre}
+                </h1>
+                <p class="text-gray-500 text-sm">
+                    Selecciona un producto para ver sus tamaños y solicitar
+                    cotización.
+                </p>
+            </header>
+
+            <!-- GRID DE PRODUCTOS -->
+            <div
+                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8"
+            >
+                {
+                    productos.map((p) => (
+                        <a
+                            href={`/catalogo/${categoria}/${p.slug}`}
+                            class="group block bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-lg hover:border-[#FD9800] transition overflow-hidden"
+                        >
+                            <div class="p-4 flex justify-center bg-white">
+                                <img
+                                    src={p.imagen}
+                                    alt={p.nombre}
+                                    class="h-32 sm:h-40 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                />
+                            </div>
+
+                            <div class="p-4 text-center">
+                                <p class="text-sm font-semibold text-[#515151] group-hover:text-[#FD9800] transition">
+                                    {p.nombre}
+                                </p>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+</Layout>

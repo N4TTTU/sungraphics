@@ -1,0 +1,40 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { categoriasCatalogo } from "../../assets/data/catalogo-categorias";
+
+const grupos = [...new Set(categoriasCatalogo.map((c) => c.grupo || "Otros"))];
+---
+
+<Layout
+  title="Catálogo de Productos"
+  description="Explora nuestro catálogo de productos organizados por categorías."
+>
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 space-y-16">
+      {
+        grupos.map((grupo) => (
+          <div class="space-y-6" id={grupo}>
+            <h2 class="text-2xl font-bold text-[#515151] uppercase tracking-wide">
+              {grupo}
+            </h2>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+              {categoriasCatalogo
+                .filter((c) => (c.grupo || "Otros") === grupo)
+                .map((cat) => (
+                  <a
+                    href={`/catalogo/${cat.slug}`}
+                    class="block p-6 text-center border border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:border-[#FD9800] transition"
+                  >
+                    <p class="text-md font-semibold text-[#515151]">
+                      {cat.nombre}
+                    </p>
+                  </a>
+                ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

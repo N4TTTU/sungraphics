@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import "../styles/global.css";
 import "aos/dist/aos.css";
 ---
 
@@ -20,6 +21,12 @@ import "aos/dist/aos.css";
 		<slot />
 		<Footer />
 	</body>
+	<!-- AOS Animation -->
+	<!-- Optional plugins -->
+
+	<!-- Preline UI -->
+	<script is:inline src="./node_modules/preline/dist/index.js"></script>
+
 	<!-- AOS Animation -->
 	<script>
 		import AOS from "aos";
@@ -44,9 +51,8 @@ import "aos/dist/aos.css";
 
 	html,
 	body {
-		margin: 0;
 		width: 100%;
-		height: 100%;
+		overflow-x: hidden;
 	}
 
 	body {
@@ -57,7 +63,6 @@ import "aos/dist/aos.css";
 	}
 
 	h1 {
-		font-family: "Blinker", sans-serif;
 		font-weight: bold;
 		font-style: normal;
 		font-display: swap;
@@ -68,7 +73,6 @@ import "aos/dist/aos.css";
 	h4,
 	h5,
 	h6 {
-		font-family: "Bebas Neue", sans-serif;
 		font-weight: normal;
 		font-style: normal;
 		font-display: swap;
@@ -118,12 +122,66 @@ import "aos/dist/aos.css";
 		border: 1px solid #fd9800;
 		box-shadow: none;
 	}
+
+	.ff-bebas {
+		font-family: "Bebas Neue", sans-serif;
+	}
+
+	.ff-blinker {
+		font-family: "Blinker", sans-serif;
+	}
+
+	.ff-blinker-bold {
+		font-family: "Blinker", sans-serif;
+		font-weight: 700;
+	}
+
+	#underline-animation {
+		position: relative;
+		display: inline-block;
+	}
+
+	#underline-animation::after {
+		content: "";
+		display: block;
+		width: 100%;
+		height: 6px;
+		background-color: #fff;
+	}
+
+	.variant-btn,
+	.color-btn {
+		color: #515151;
+		background-color: #ffffff;
+	}
+
+	/* Hover */
+	.variant-btn:hover,
+	.color-btn:hover {
+		color: #fd9800;
+		border-color: #fd9800;
+	}
+
+	/* Estado seleccionado (JS ya agrega estas clases) */
+	.variant-btn.bg-\[\#FD9800\],
+	.color-btn.bg-\[\#FD9800\] {
+		background-color: #fd9800 !important;
+		color: #ffffff !important;
+		border-color: #fd9800 !important;
+	}
+
+	/* Asegura que el texto interno NO se pierda */
+	.variant-btn span,
+	.color-btn span {
+		color: inherit;
+	}
 </style>
 
 <!-- 
  COLORES
 
  Fondo naranja : #FD9800
+ FONDO GOOGLE
  Fondo gris : #FD9800
 Letra gris : #515151
 FONDO GRIS OSCURO : #1e1e1e

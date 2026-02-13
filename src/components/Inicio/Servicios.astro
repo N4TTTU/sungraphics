@@ -1,0 +1,101 @@
+---
+import { servicios } from "../../assets/data/servicios.ts"; // O ajusta el path
+
+// Solo mostramos los primeros 9 para el grid 3x3
+const serviciosDestacados = servicios.slice(0, 9);
+
+// Pequeña ayuda para que todas las rutas de imagen tengan "/" inicial
+const normalizarRuta = (ruta?: string) =>
+    ruta ? (ruta.startsWith("/") ? ruta : `/${ruta}`) : "";
+---
+
+<section class="w-full bg-white py-16">
+    <div class="max-w-6xl mx-auto px-4">
+        <!-- GRID 3x3 -->
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        >
+            {
+                serviciosDestacados.map((servicio) => (
+                    // <a
+                    //     href={`/servicios/${servicio.slug}/`}
+                    //     class="group block overflow-hidden rounded-lg shadow-md bg-white hover:bg-amber-200"
+                    //     data-aos="zoom-in"
+                    //     data-aos-duration="1000"
+                    //     data-aos-delay="1300"
+                    //     data-aos-once="true"
+                    // >
+                    //     <div class="relative w-full aspect-[4/3] overflow-hidden">
+                    //         <img
+                    //             src={normalizarRuta(servicio.imagenPrincipal)}
+                    //             alt={servicio.titulo}
+                    //             loading="lazy"
+                    //             class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    //         />
+                    //     </div>
+                    // </a>
+
+                    <a
+                        href={`/servicios/${servicio.slug}/`}
+                        class="group relative block overflow-hidden rounded-xl shadow-md bg-white"
+                        data-aos="zoom-in"
+                        data-aos-duration="1000"
+                        data-aos-delay="300"
+                        data-aos-once="true"
+                    >
+                     <!-- CONTENEDOR IMAGEN -->
+                        <div class="relative w-full aspect-[4/3] overflow-hidden">
+                            <img
+                            src={normalizarRuta(servicio.imagenPrincipal)}
+                            alt={servicio.titulo}
+                            loading="lazy"
+                            class="h-full w-full object-cover transition-transform duration-700 ease-out
+                                    group-hover:scale-[1.06]"
+                            />
+
+                            <!-- OVERLAY -->
+                            <div
+                              class="absolute inset-0
+                                bg-gradient-to-t from-black/70 via-black/45 to-black/30
+                                transition-all duration-700 ease-out
+                                group-hover:from-black/90
+                                group-hover:via-black/75
+                                group-hover:to-black/50
+                                group-hover:backdrop-blur-[2px]"
+                            ></div>
+
+                            <!-- TEXTO CENTRADO -->
+                            <div
+                            class="absolute inset-0 flex items-center justify-center text-center px-4"
+                            >
+                            <h3
+                                class="ff-blinker-bold text-white uppercase tracking-wide
+                                    text-lg sm:text-xl md:text-2xl
+                                    transition-transform duration-500 ease-out
+                                    group-hover:scale-[1.08]"
+                            >
+                                {servicio.titulo}
+                            </h3>
+                            </div>
+                        </div>
+                    </a>
+
+                ))
+            }
+        </div>
+
+        <!-- BOTÓN VER MÁS -->
+        <div class="mt-10 flex justify-center">
+            <a
+                href="/servicios"
+                class="inline-flex items-center px-10 py-3 rounded-full bg-[#FD9800] text-white font-semibold uppercase tracking-wide shadow-md hover:bg-[#f18700] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FD9800] transition"
+                data-aos="zoom-in"
+                data-aos-duration="1000"
+                data-aos-delay="300"
+                data-aos-once="true"
+            >
+                VER MÁS
+            </a>
+        </div>
+    </div>
+</section>

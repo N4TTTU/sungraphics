@@ -1,0 +1,67 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import type { Personalizado } from "@/assets/data/personalizados";
+import { personalizados } from "@/assets/data/personalizados";
+
+export async function getStaticPaths() {
+    return personalizados.map((p) => ({
+        params: { slug: p.slug },
+        props: { personalizado: p },
+    }));
+}
+
+const { personalizado } = Astro.props as { personalizado: Personalizado };
+
+const portada =
+    personalizado.imagenPrincipal ??
+    personalizado.galeria?.[0] ??
+    "/img/placeholder.jpg";
+---
+
+<Layout>
+    <section class="container mx-auto px-4 py-12">
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold mb-3">
+                {personalizado.titulo}
+            </h1>
+
+            {
+                personalizado.descripcion && (
+                    <p class="text-gray-600">{personalizado.descripcion}</p>
+                )
+            }
+        </header>
+
+        <figure class="mb-10">
+            <img
+                src={portada}
+                alt={`Portada de ${personalizado.titulo}`}
+                class="w-full max-h-[480px] object-cover rounded-xl shadow-sm"
+                loading="eager"
+                width="1200"
+                height="800"
+            />
+        </figure>
+
+        {
+            personalizado.galeria.length > 0 && (
+                <section class="mb-12">
+                    <h2 class="text-2xl font-semibold mb-4">Galería</h2>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        {personalizado.galeria.map((img, i) => (
+                            <img
+                                src={img}
+                                alt={`${personalizado.titulo} ${i + 1}`}
+                                class="rounded-xl shadow-sm hover:shadow-lg transition-transform duration-300 hover:scale-105"
+                                loading="lazy"
+                                width="800"
+                                height="600"
+                            />
+                        ))}
+                    </div>
+                </section>
+            )
+        }
+    </section>
+</Layout>

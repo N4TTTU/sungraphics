@@ -16,7 +16,8 @@ import { servicios } from "@/assets/data/servicios";
                     const portada =
                         s.imagenPrincipal ??
                         s.galeria?.[0] ??
-                        "/img/placeholder.jpg";
+                        "/img/placeholder.jpg"; // asegúrate de tener este placeholder
+
                     return (
                         <article class="group relative rounded-xl overflow-hidden bg-white border shadow-sm hover:shadow-md transition-all">
                             <img
@@ -24,6 +25,8 @@ import { servicios } from "@/assets/data/servicios";
                                 alt={s.titulo}
                                 class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
                                 loading="lazy"
+                                width="800"
+                                height="600"
                             />
                             <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
                                 <h2 class="text-lg font-semibold text-white">
@@ -35,6 +38,8 @@ import { servicios } from "@/assets/data/servicios";
                                     </p>
                                 )}
                             </div>
+
+                            {/* enlace a la ruta dinámica (todo en minúsculas) */}
                             <a
                                 href={`/servicios/${s.slug}`}
                                 class="absolute inset-0"
@@ -46,4 +51,4 @@ import { servicios } from "@/assets/data/servicios";
             }
         </div>
     </section>
-</Layout> 
+</Layout>

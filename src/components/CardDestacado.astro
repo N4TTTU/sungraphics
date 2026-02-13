@@ -1,0 +1,59 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    image: string;
+    href?: string;
+}
+
+const { title, description, image, href = "#" } = Astro.props;
+---
+
+<article
+    class="max-w-sm mx-auto rounded-2xl bg-slate-900 text-slate-50 shadow-lg border border-slate-800 overflow-hidden"
+    data-aos="fade-up"
+    data-aos-duration="700"
+>
+    <!-- Imagen -->
+    <div class="relative">
+        <img
+            src={image}
+            alt={title}
+            loading="lazy"
+            class="w-full h-56 object-cover"
+        />
+    </div>
+
+    <!-- Contenido -->
+    <div class="p-6 space-y-4">
+        <h3 class="text-xl font-semibold leading-snug">
+            {title}
+        </h3>
+
+        <p class="text-sm text-slate-300">
+            {description}
+        </p>
+
+        <a
+            href={href}
+            class="inline-flex items-center gap-x-2 rounded-lg border border-transparent bg-[#FD9800] px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-[#df8600] focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-slate-900"
+        >
+            Read more
+            <span class="inline-flex items-center justify-center">
+                <svg
+                    class="h-4 w-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M4.5 12h15m0 0-6-6m6 6-6 6"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </span>
+        </a>
+    </div>
+</article>

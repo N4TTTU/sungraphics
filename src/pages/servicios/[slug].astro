@@ -3,28 +3,45 @@ import Layout from "@/layouts/Layout.astro";
 import type { Servicio } from "@/assets/data/servicios";
 import { servicios } from "@/assets/data/servicios";
 
-// 👇 Astro necesita esto para rutas dinámicas al prerender
+// Rutas estáticas para prerender
 export async function getStaticPaths() {
     return servicios.map((s) => ({
-        params: { slug: s.slug }, // /servicios/<slug>
-        props: { servicio: s }, // pasa el servicio como prop
+        params: { slug: s.slug },
+        props: { servicio: s },
     }));
 }
 
-// Recibe la prop arriba
 const { servicio } = Astro.props as { servicio: Servicio };
+
+// Fallback de portada
+const portada =
+    servicio.imagenPrincipal ?? servicio.galeria?.[0] ?? "/img/placeholder.jpg";
 ---
 
 <Layout>
-    <!-- Contenido de la página del servicio -->
     <section class="container mx-auto px-4 py-12">
-        <h1 class="text-3xl font-bold mb-4">{servicio.titulo}</h1>
-        {
-            servicio.descripcion && (
-                <p class="text-gray-600 mb-8">{servicio.descripcion}</p>
-            )
-        }
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold mb-3">{servicio.titulo}</h1>
+            {
+                servicio.descripcion && (
+                    <p class="text-gray-600">{servicio.descripcion}</p>
+                )
+            }
+        </header>
 
+        {/* Portada */}
+        <figure class="mb-10">
+            <img
+                src={portada}
+                alt={`Portada de ${servicio.titulo}`}
+                class="w-full max-h-[480px] object-cover rounded-xl shadow-sm"
+                loading="eager"
+                width="1200"
+                height="800"
+            />
+        </figure>
+
+        {/* Galería (si hay) */}
         {
             servicio.galeria.length > 0 && (
                 <section class="mb-12">
@@ -36,6 +53,8 @@ const { servicio } = Astro.props as { servicio: Servicio };
                                 alt={`${servicio.titulo} ${i + 1}`}
                                 class="rounded-xl shadow-sm hover:shadow-lg transition-transform duration-300 hover:scale-105"
                                 loading="lazy"
+                                width="800"
+                                height="600"
                             />
                         ))}
                     </div>

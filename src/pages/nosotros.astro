@@ -1,9 +1,11 @@
 ---
+import NosotrosProveedores from "@/components/NosotrosProveedores.astro";
 import Layout from "../layouts/Layout.astro";
+import CardHero from "@/components/Nosotros/CardHero.astro";
 ---
 
 <Layout>
-    <section>
+    <section class="bg-slate-50">
         <div class="text-center">
             <h3 class="uppercase tx-enun sm:tx-enun-sm text-[#515151] pt-10">
                 Nosotros
@@ -15,110 +17,35 @@ import Layout from "../layouts/Layout.astro";
 
         <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 items-start gap-2">
-                <a
-                    class="lg:min-h-[400px] sm:min-h-[300px] group flex flex-col items-center bg-gray-50 focus:outline-hidden focus:bg-gray-50 rounded-xl p-6 md:p-7"
-                    href="#"
-                >
-                    <div
-                        class="flex justify-center items-center size-12 rounded-xl"
-                    >
-                        <img src="/icon/headicon.svg" alt="" />
-                    </div>
-                    <div class="mt-5">
-                        <h3
-                            class="group-hover:text-[#515151] text-[30px] text-center font-semibold text-[#515151]"
-                        >
-                            Comunicación
-                        </h3>
-                        <p class="mt-1 text-center">
-                            La primordial con respecto a las personas y con
-                            respecto a todas las organizaciones con las cuales
-                            nos relacionemos. Se concentra en estar informados
-                            adecuadamente para asegurar el trabajo en equipo.
-                        </p>
-                    </div>
-                </a>
-
-                <a
-                    class="lg:min-h-[400px] sm:min-h-[300px] group flex flex-col items-center bg-gray-50 focus:outline-hidden focus:bg-gray-50 rounded-xl p-6 md:p-7"
-                    href="#"
-                >
-                    <div
-                        class="flex justify-center items-center size-12 rounded-xl"
-                    >
-                        <img src="/icon/busicon.svg" alt="" />
-                    </div>
-                    <div class="mt-5">
-                        <h3
-                            class="group-hover:text-gray-600 text-[30px] text-center font-semibold text-[#515151]"
-                        >
-                            Proveedores
-                        </h3>
-                        <p class="mt-1 text-gray-600 text-center">
-                            Nuestro equipo siempre agradable con nuestros
-                            proveedores, nuestra forma de trabajo que hace
-                            concluir nuestros compromisos oportunamente y el
-                            respaldo del tiempo en este rubro, nos ha
-                            diferenciado de nuestra competencia.
-                        </p>
-                    </div>
-                </a>
-                <a
-                    class="lg:min-h-[400px] sm:min-h-[300px] group flex flex-col items-center bg-gray-50 focus:outline-hidden focus:bg-gray-50 rounded-xl p-6 md:p-7"
-                    href="#"
-                >
-                    <div
-                        class="flex justify-center items-center size-12 rounded-xl"
-                    >
-                        <img src="/icon/staricon.svg" alt="" />
-                    </div>
-                    <div class="mt-5">
-                        <h3
-                            class="group-hover:text-[#515151] text-[30px] text-center font-semibold text-[#515151]"
-                        >
-                            Dinamismo
-                        </h3>
-                        <p class="mt-1 text-gray-600 text-center">
-                            Capacidad y flexibilidad con respecto a la
-                            adaptación a los cambios. Esta estrategia laboral es
-                            adecuada a los requerimientos de nuestros clientes y
-                            a los desafíos económicos y tecnológicos.
-                        </p>
-                    </div>
-                </a>
-                <a
-                    class="lg:min-h-[400px] sm:min-h-[300px] group flex flex-col items-center bg-gray-50 focus:outline-hidden focus:bg-gray-50 rounded-xl p-6 md:p-7"
-                    href="#"
-                >
-                    <div
-                        class="flex justify-center items-center size-12 rounded-xl"
-                    >
-                        <img src="/icon/handicon.svg" alt="" />
-                    </div>
-                    <div class="mt-5">
-                        <h3
-                            class="group-hover:text-gray-600 text-[30px] text-center font-semibold text-[#515151]"
-                        >
-                            Relaciones
-                        </h3>
-                        <p class="mt-1 text-[#515151] text-center">
-                            Generar confianza y compromiso en todos los aspectos
-                            que se relacionen con nuestra moral ética
-                            empresarial.
-                        </p>
-                    </div>
-                </a>
+                <CardHero
+                    title="Comunicación"
+                    description="La primordial con respecto a las personas y con respecto a todas las organizaciones con las cuales nos relacionemos. Se concentra en estar informados adecuadamente para asegurar el trabajo en equipo."
+                    icon="/icon/headicon.svg"
+                />
+                <CardHero
+                    title="Proveedores"
+                    description="Nuestro equipo siempre agradable con nuestros proveedores, nuestra forma de trabajo que hace concluir nuestros compromisos oportunamente y el respaldo del tiempo en este rubro, nos ha diferenciado de nuestra competencia."
+                    icon="/icon/busicon.svg"
+                />
+                <CardHero
+                    title="Dinamismo"
+                    description="Capacidad y flexibilidad con respecto a la adaptación a los cambios. Esta estrategia laboral es adecuada a los requerimientos de nuestros clientes y a los desafíos económicos y tecnológicos."
+                    icon="/icon/staricon.svg"
+                />
+                <CardHero
+                    title="Relaciones"
+                    description="Generar confianza y compromiso en todos los aspectos que se relacionen con nuestra moral ética empresarial."
+                    icon="/icon/handicon.svg"
+                />
             </div>
         </div>
     </section>
 
     <section>
-        <!-- Features -->
         <div
             class="max-w-[1220px] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto bg-white"
         >
             <div class="relative p-6 md:p-16">
-                <!-- Grid -->
                 <div
                     class="relative z-10 lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center"
                 >
@@ -136,14 +63,10 @@ import Layout from "../layouts/Layout.astro";
                             un equipo de profesionales que saben atenderlos y
                             asesorarlos para cualquier tipo de proyectos.
                         </h2>
-
-                        <!-- End Tab Navs -->
                     </div>
-                    <!-- End Col -->
 
                     <div class="lg:col-span-6">
                         <div class="relative">
-                            <!-- Tab Content -->
                             <div>
                                 <div
                                     id="tabs-with-card-1"
@@ -157,9 +80,6 @@ import Layout from "../layouts/Layout.astro";
                                     />
                                 </div>
                             </div>
-                            <!-- End Tab Content -->
-
-                            <!-- SVG Element -->
                             <div
                                 class="hidden absolute top-0 end-0 translate-x-20 md:block lg:translate-x-20"
                             >
@@ -188,29 +108,21 @@ import Layout from "../layouts/Layout.astro";
                                         stroke-linecap="round"></path>
                                 </svg>
                             </div>
-                            <!-- End SVG Element -->
                         </div>
                     </div>
-                    <!-- End Col -->
                 </div>
-                <!-- End Grid -->
-
-                <!-- Background Color -->
                 <div class="absolute inset-0 grid grid-cols-12 size-full">
                     <div
                         class="col-span-full lg:col-span-7 lg:col-start-6 bg-gray-100 w-full h-5/6 rounded-xl sm:h-3/4 lg:h-full"
                     >
                     </div>
                 </div>
-                <!-- End Background Color -->
             </div>
         </div>
-        <!-- End Features -->
     </section>
 
     <section>
         <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            <!-- Title -->
             <div class="sm:w-1/2 xl:w-1/3 mx-auto text-center mb-6">
                 <h2
                     class="tx-enun sm:tx-enun-sm md:leading-tight text-[#515151]"
@@ -218,25 +130,12 @@ import Layout from "../layouts/Layout.astro";
                     Nuestros colaboradores
                 </h2>
             </div>
-            <!-- End Title -->
-
-            <!-- Grid -->
-            <div
-                class="my-8 md:my-16 grid grid-cols-3 sm:flex sm:justify-center gap-6 sm:gap-x-12 lg:gap-x-20"
-            >
-                <a class="shrink-0 transition hover:-translate-y-1" href="#">
-                    <img
-                        class="w-[80%] h-auto m-auto grayscale opacity-60 hover:opacity-100"
-                        src="/img/Colaboradores.svg"
-                        alt="Colaborador 1"
-                    />
-                </a>
-            </div>
-            <!-- End Grid -->
+            <!-- Scroll proveedores -->
+            <NosotrosProveedores />
         </div>
     </section>
 
-    <section class="pb-30">
+    <section class="pb-30 pt-15">
         <div>
             <div class="text-center">
                 <h2
@@ -335,3 +234,16 @@ import Layout from "../layouts/Layout.astro";
         </div>
     </section>
 </Layout>
+
+<style>
+    @layer utilities {
+        @keyframes logo-marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    }
+</style>
