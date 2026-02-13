@@ -3,7 +3,6 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import "../styles/global.css";
 import "aos/dist/aos.css";
-import "preline";
 ---
 
 <!doctype html>
@@ -23,17 +22,17 @@ import "preline";
 		<Footer />
 	</body>
 	<!-- AOS Animation -->
-	<!-- Optional plugins -->
-
-	<!-- Preline UI -->
-	<script is:inline src="./node_modules/preline/dist/index.js"></script>
-
-	<!-- AOS Animation -->
 	<script>
-		import AOS from "aos";
-		document.addEventListener("DOMContentLoaded", () => {
-			AOS.init();
-		});
+		if (typeof window !== "undefined") {
+			import("aos").then((AOS) => {
+				AOS.default.init();
+			});
+		}
+	</script>
+	<script>
+		if (typeof window !== "undefined") {
+			import("preline");
+		}
 	</script>
 </html>
 
