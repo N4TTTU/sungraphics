@@ -1,7 +1,7 @@
 ---
-import NosotrosProveedores from "@/components/NosotrosProveedores.astro";
+import NosotrosProveedores from "../components/NosotrosProveedores.astro";
 import Layout from "../layouts/Layout.astro";
-import CardHero from "@/components/Nosotros/CardHero.astro";
+import CardHero from "../components/Nosotros/CardHero.astro";
 ---
 
 <Layout>
@@ -235,15 +235,3 @@ import CardHero from "@/components/Nosotros/CardHero.astro";
     </section>
 </Layout>
 
-<style>
-    @layer utilities {
-        @keyframes logo-marquee {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-    }
-</style>

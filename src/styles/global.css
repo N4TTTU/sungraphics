@@ -4,3 +4,16 @@
 
 @import "preline/variants.css";
 @import "aos/dist/aos.css";
+
+
+
+
+@keyframes logo-marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}

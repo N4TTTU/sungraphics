@@ -2,6 +2,8 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import "../styles/global.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 ---
 
 <!doctype html>
@@ -22,12 +24,25 @@ import "../styles/global.css";
 	</body>
 	<!-- AOS Animation -->
 	<script>
-		if (typeof window !== "undefined") {
-			import("aos").then((AOS) => {
-				AOS.default.init();
+		import AOS from "aos";
+
+		function initAOS() {
+			AOS.init({
+				once: true,
+				duration: 800,
+				easing: "ease-in-out",
 			});
 		}
+
+		// Primera carga
+		document.addEventListener("DOMContentLoaded", initAOS);
+
+		// Cuando Astro cambia de página
+		document.addEventListener("astro:page-load", () => {
+			AOS.refreshHard();
+		});
 	</script>
+
 	<script>
 		if (typeof window !== "undefined") {
 			import("preline");
