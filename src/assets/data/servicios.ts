@@ -39,7 +39,7 @@ export const servicios: Servicio[] = [
             {
                 title: "Bastidores",
                 images: [
-                    { src: "/img/servicios/gigantografias/bastidores-1.webp", alt: "Bastidor 1" },
+                    { src: "/img/servicios/gigantografias/bastidores.webp", alt: "Bastidor 1" },
                     { src: "/img/servicios/gigantografias/bastidores-2.webp", alt: "Bastidor 2" },
                     { src: "/img/servicios/gigantografias/bastidores-3.webp", alt: "Bastidor 3" },
                     { src: "/img/servicios/gigantografias/bastidores-4.webp", alt: "Bastidor 4" },
