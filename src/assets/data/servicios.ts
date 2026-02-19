@@ -1,113 +1,385 @@
-export interface Servicio {
+export type GallerySection = {
+    title: string;
+    images: { src: string; alt?: string }[];
+};
+
+export type Servicio = {
     slug: string;
     titulo: string;
+    claim: string;          // 👈 nuevo (texto del cuadro gris)
     descripcion?: string;
-    categoria?: string;
-    imagenPrincipal?: string; // portada (desde /public)
-    galeria: string[];
-}
+    imagenPrincipal: string;
+    sections?: {
+        title: string;
+        images: { src: string; alt?: string }[];
+    }[];
+};
+
 
 export const servicios: Servicio[] = [
     {
-        slug: "letreros-camineros",
-        titulo: "Letreros camineros",
-        categoria: "Señalética vial",
-        imagenPrincipal: "/img/servicios/portadas/LetrerosCamineros.webp",
-        galeria: [
-            "/img/servicios/galeria/letreros-camineros-1.webp",
-            "/img/servicios/galeria/letreros-camineros-2.webp",
-        ]
+        slug: "gigantografias-bastidores",
+        titulo: "GIGANTOGRAFÍAS\nY BASTIDORES",
+        descripcion:
+            "Destaca tu marca con gigantografías y bastidores de gran formato, resistentes y con acabado profesional.",
+        imagenPrincipal: "/img/servicios/portadas/GigantografiaBastidores.webp",
+        claim: "Destaca tu marca con gigantografías y bastidores de gran formato, resistentes y con acabado profesional.",
+        sections: [
+            {
+                title: "LETREROS Camineros",
+                images: [
+                    { src: "/img/servicios/gigantografias/Gigantografia-1.webp", alt: "Letrero caminero 1" },
+                    { src: "/img/servicios/gigantografias/Gigantografia-2.webp", alt: "Letrero caminero 2" },
+                    { src: "/img/servicios/gigantografias/Gigantografia-3.webp", alt: "Letrero caminero 3" },
+                    { src: "/img/servicios/gigantografias/Gigantografia-4.webp", alt: "Letrero caminero 4" },
+                    { src: "/img/servicios/gigantografias/Gigantografia-5.webp", alt: "Letrero caminero 5" },
+                    { src: "/img/servicios/gigantografias/Gigantografia-6.webp", alt: "Letrero caminero 6" },
+                ],
+            },
+            {
+                title: "Bastidores",
+                images: [
+                    { src: "/img/servicios/gigantografias/Bastidores-1.webp", alt: "Bastidor 1" },
+                    { src: "/img/servicios/gigantografias/Bastidores-2.webp", alt: "Bastidor 2" },
+                    { src: "/img/servicios/gigantografias/Bastidores-3.webp", alt: "Bastidor 3" },
+                    { src: "/img/servicios/gigantografias/Bastidores-4.webp", alt: "Bastidor 4" },
+                    { src: "/img/servicios/gigantografias/Bastidores-5.webp", alt: "Bastidor 5" },
+                    { src: "/img/servicios/gigantografias/Bastidores-6.webp", alt: "Bastidor 6" },
+                ],
+            },
+        ],
     },
     {
         slug: "letreros-luminosos",
-        titulo: "Letreros luminosos",
-        categoria: "Iluminación / Publicidad",
+        titulo: "LETREROS\nLUMINOSOS",
+        descripcion:
+            "Haz brillar tu marca con letreros luminosos que atraen miradas día y noche.",
         imagenPrincipal: "/img/servicios/portadas/LetrerosLuminosos.webp",
-        galeria: [],
-    },
-    {
-        slug: "letreros-volumetricos-luminosos",
-        titulo: "Letreros volumétricos luminosos",
-        categoria: "Corpóreos / Iluminación",
-        imagenPrincipal: "/img/servicios/portadas/LetrerosVolumetricosLuminosos.webp",
-        galeria: [],
-    },
-    {
-        slug: "cerco-publicitario",
-        titulo: "Cerco publicitario",
-        imagenPrincipal: "/img/servicios/portadas/CercoPublicitario.webp",
-        galeria: [],
-    },
-    {
-        slug: "demarcaciones",
-        titulo: "Demarcaciones",
-        imagenPrincipal: "/img/servicios/portadas/Demarcaciones.webp",
-        galeria: [],
-    },
-    {
-        slug: "empavonados",
-        titulo: "Empavonados",
-        imagenPrincipal: "/img/servicios/portadas/Empavonados.webp",
-        galeria: [],
-    },
-    {
-        slug: "exhibidores-publicitarios",
-        titulo: "Exhibidores publicitarios",
-        imagenPrincipal: "/img/servicios/portadas/ExhibidoresPublicitarios.webp",
-        galeria: [],
-    },
-    {
-        slug: "gigantografia-bastidores",
-        titulo: "Gigantografía y bastidores",
-        imagenPrincipal: "/img/servicios/portadas/GigantografiaBastidores.webp",
-        galeria: [],
-    },
-    {
-        slug: "grabados",
-        titulo: "Grabados",
-        imagenPrincipal: "/img/servicios/portadas/Grabados.webp",
-        galeria: [],
-    },
-    {
-        slug: "impresion-cuatricromia",
-        titulo: "Impresión cuatricromía",
-        imagenPrincipal: "/img/servicios/portadas/ImpresionCuatricromia.webp",
-        galeria: [],
-    },
-    {
-        slug: "letras-volumetricas",
-        titulo: "Letras volumétricas",
-        imagenPrincipal: "/img/servicios/portadas/LetrasVolumetricas.webp",
-        galeria: [],
-    },
-    {
-        slug: "letrero",
-        titulo: "Letrero",
-        imagenPrincipal: "/img/servicios/portadas/Letrero.webp",
-        galeria: [],
-    },
-    {
-        slug: "one-way-vision",
-        titulo: "One Way Vision",
-        imagenPrincipal: "/img/servicios/portadas/OneWayVision.webp",
-        galeria: [],
-    },
-    {
-        slug: "rotulacion-vehicular",
-        titulo: "Rotulación vehicular",
-        imagenPrincipal: "/img/servicios/portadas/RotulacionVehicular.webp",
-        galeria: [],
+        claim: "Haz brillar tu marca con letreros luminosos que atraen miradas día y noche.",
+        sections: [
+            {
+                title: "LETREROS LUMINOSOS",
+                images: [
+                    { src: "/img/servicios/letrerosluminosos/LetrerosLuminosos-1.webp", alt: "Letrero luminoso 1" },
+                    { src: "/img/servicios/letrerosluminosos/LetrerosLuminosos-2.webp", alt: "Letrero luminoso 2" },
+                    { src: "/img/servicios/letrerosluminosos/LetrerosLuminosos-3.webp", alt: "Letrero luminoso 3" },
+                    { src: "/img/servicios/letrerosluminosos/LetrerosLuminosos-4.webp", alt: "Letrero luminoso 4" },
+                    { src: "/img/servicios/letrerosluminosos/LetrerosLuminosos-5.webp", alt: "Letrero luminoso 5" },
+                    { src: "/img/servicios/letrerosluminosos/LetrerosLuminosos-6.webp", alt: "Letrero luminoso 6" },
+                ],
+            },
+            {
+                title: "LETREROS VOLUMÉTRICOS LUMINOSOS",
+                images: [
+                    { src: "/img/servicios/letrerosluminosos/LetreroVolumetricoLuminoso-1.webp", alt: "Letrero volumétrico 1" },
+                    { src: "/img/servicios/letrerosluminosos/LetreroVolumetricoLuminoso-2.webp", alt: "Letrero volumétrico 2" },
+                    { src: "/img/servicios/letrerosluminosos/LetreroVolumetricoLuminoso-3.webp", alt: "Letrero volumétrico 3" },
+                    { src: "/img/servicios/letrerosluminosos/LetreroVolumetricoLuminoso-4.webp", alt: "Letrero volumétrico 4" },
+                    { src: "/img/servicios/letrerosluminosos/LetreroVolumetricoLuminoso-5.webp", alt: "Letrero volumétrico 5" },
+                    { src: "/img/servicios/letrerosluminosos/LetreroVolumetricoLuminoso-6.webp", alt: "Letrero volumétrico 6" },
+                ],
+            },
+        ],
     },
     {
         slug: "senaleticas",
-        titulo: "Señaléticas",
-        imagenPrincipal: "/img/servicios/portadas/Senaleticas.webp",
-        galeria: [],
+        titulo: "SEÑALÉTICA",
+        descripcion:
+            "Señaléticas que informan y guían con estilo y profesionalismo.",
+        imagenPrincipal: "/img/servicios/portadas/Senaletica.webp",
+        claim: "Señaléticas que informan y guían con estilo y profesionalismo.",
+        sections: [
+            {
+                title: "SEÑALÉTICAS VIDRIO",
+                images: [
+                    { src: "/img/servicios/Senaletica/SenaleticaVidrio-1.webp", alt: "Señalética 1" },
+                    { src: "/img/servicios/Senaletica/SenaleticaVidrio-2.webp", alt: "Señalética 2" },
+                    { src: "/img/servicios/Senaletica/SenaleticaVidrio-3.webp", alt: "Señalética 3" },
+                    { src: "/img/servicios/Senaletica/SenaleticaVidrio-4.webp", alt: "Señalética 4" },
+                    { src: "/img/servicios/Senaletica/SenaleticaVidrio-5.webp", alt: "Señalética 5" },
+                    { src: "/img/servicios/Senaletica/SenaleticaVidrio-6.webp", alt: "Señalética 6" },
+                ],
+            },
+            {
+                title: "SEÑALÉTICAS METAL",
+                images: [
+                    { src: "/img/servicios/Senaletica/SenaleticaMetal-1.webp", alt: "Señalética metal 1" },
+                    { src: "/img/servicios/Senaletica/SenaleticaMetal-2.webp", alt: "Señalética metal 2" },
+                    { src: "/img/servicios/Senaletica/SenaleticaMetal-3.webp", alt: "Señalética metal 3" },
+                    { src: "/img/servicios/Senaletica/SenaleticaMetal-4.webp", alt: "Señalética metal 4" },
+                    { src: "/img/servicios/Senaletica/SenaleticaMetal-5.webp", alt: "Señalética metal 5" },
+                    { src: "/img/servicios/Senaletica/SenaleticaMetal-6.webp", alt: "Señalética metal 6" },
+                ],
+            },
+            {
+                title: "SEÑALÉTICAS MADERA",
+                images: [
+                    { src: "/img/servicios/Senaletica/SenaleticaMadera-1.webp", alt: "Señalética madera 1" },
+                    { src: "/img/servicios/Senaletica/SenaleticaMadera-2.webp", alt: "Señalética madera 2" },
+                    { src: "/img/servicios/Senaletica/SenaleticaMadera-3.webp", alt: "Señalética madera 3" },
+                    { src: "/img/servicios/Senaletica/SenaleticaMadera-4.webp", alt: "Señalética madera 4" },
+                    { src: "/img/servicios/Senaletica/SenaleticaMadera-5.webp", alt: "Señalética madera 5" },
+                    { src: "/img/servicios/Senaletica/SenaleticaMadera-6.webp", alt: "Señalética madera 6" },
+                ],
+            },
+        ],
     },
     {
-        slug: "Otros-servicios",
-        titulo: "Otros servicios",
-        imagenPrincipal: "/img/servicios/portadas/",
-        galeria: [],
+        slug: "grabados",
+        titulo: "GRABADOS",
+        descripcion:
+            "Grabados en madera, metal, vidrio y más, que aportan distinción, durabilidad y acabado profesional.",
+        imagenPrincipal: "/img/servicios/portadas/Grabados.webp",
+        claim: "Grabados en madera, metal, vidrio y más, que aportan distinción, durabilidad y acabado profesional.",
+        sections: [
+            {
+                title: "Grabado en acrilico",
+                images: [
+                    { src: "/img/servicios/Grabados/GrabadoAcrilico-1.webp", alt: "Grabados en acrilico 1" },
+                    { src: "/img/servicios/Grabados/GrabadoAcrilico-2.webp", alt: "Grabados en acrilico 2" },
+                    { src: "/img/servicios/Grabados/GrabadoAcrilico-3.webp", alt: "Grabados en acrilico 3" },
+                    { src: "/img/servicios/Grabados/GrabadoAcrilico-4.webp", alt: "Grabados en acrilico 4" },
+                    { src: "/img/servicios/Grabados/GrabadoAcrilico-5.webp", alt: "Grabados en acrilico 5" },
+                    { src: "/img/servicios/Grabados/GrabadoAcrilico-6.webp", alt: "Grabados en acrilico 6" },
+                ],
+            },
+            {
+                title: "Grabado en madera",
+                images: [
+                    { src: "/img/servicios/Grabados/GrabadoMadera-1.webp", alt: "Grabados en madera 1" },
+                    { src: "/img/servicios/Grabados/GrabadoMadera-2.webp", alt: "Grabados en madera 2" },
+                    { src: "/img/servicios/Grabados/GrabadoMadera-3.webp", alt: "Grabados en madera 3" },
+                    { src: "/img/servicios/Grabados/GrabadoMadera-4.webp", alt: "Grabados en madera 4" },
+                    { src: "/img/servicios/Grabados/GrabadoMadera-5.webp", alt: "Grabados en madera 5" },
+                    { src: "/img/servicios/Grabados/GrabadoMadera-6.webp", alt: "Grabados en madera 6" },
+                ],
+            },
+            // {
+            //     title: "Grabado en vidrio",
+            //     images: [
+            //         { src: "/img/servicios/Grabados/GrabadoEnVidrio-1.webp", alt: "Grabados en vidrio 1" },
+            //         { src: "/img/servicios/Grabados/GrabadoEnVidrio-2.webp", alt: "Grabados en vidrio 2" },
+            //         { src: "/img/servicios/Grabados/GrabadoEnVidrio-3.webp", alt: "Grabados en vidrio 3" },
+            //         { src: "/img/servicios/Grabados/GrabadoEnVidrio-4.webp", alt: "Grabados en vidrio 4" },
+            //         { src: "/img/servicios/Grabados/GrabadoEnVidrio-5.webp", alt: "Grabados en vidrio 5" },
+            //         { src: "/img/servicios/Grabados/GrabadoEnVidrio-6.webp", alt: "Grabados en vidrio 6" },
+            //     ],
+            // },
+        ],
     },
+    {
+        slug: "demarcaciones",
+        titulo: "DEMARCACIONES",
+        descripcion:
+            "Demarcaciones de piso que ordenan, guían y brindan seguridad con imagen profesional.",
+        imagenPrincipal: "/img/servicios/portadas/Demarcaciones.webp",
+        claim: "Demarcaciones de piso que ordenan, guían y brindan seguridad con imagen profesional.",
+        sections: [
+            {
+                title: "DEMARCACIONES",
+                images: [
+                    { src: "/img/servicios/Demarcaciones/Demarcaciones-1.webp", alt: "Demarcaciones 1" },
+                    { src: "/img/servicios/Demarcaciones/Demarcaciones-2.webp", alt: "Demarcaciones 2" },
+                    { src: "/img/servicios/Demarcaciones/Demarcaciones-3.webp", alt: "Demarcaciones 3" },
+                    { src: "/img/servicios/Demarcaciones/Demarcaciones-4.webp", alt: "Demarcaciones 4" },
+                    { src: "/img/servicios/Demarcaciones/Demarcaciones-5.webp", alt: "Demarcaciones 5" },
+                    { src: "/img/servicios/Demarcaciones/Demarcaciones-6.webp", alt: "Demarcaciones 6" },
+                ],
+            },
+        ],
+    },
+    {
+        slug: "exhibidores-publicitarios",
+        titulo: "EXHIBIDORES PUBLICITARIOS",
+        descripcion:
+            "Exhibidores publicitarios que destacan y comunican con imagen profesional.",
+        imagenPrincipal: "/img/servicios/portadas/ExhibidoresPublicitarios.webp",
+        claim: "Exhibidores publicitarios que destacan y comunican con imagen profesional.",
+        sections: [
+            {
+                title: "Exhibidores publicitarios",
+                images: [
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-1.webp", alt: "Empavonados de interior 1" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-2.webp", alt: "Empavonados de interior 2" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-3.webp", alt: "Empavonados de interior 3" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-4.webp", alt: "Empavonados de interior 4" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-5.webp", alt: "Empavonados de interior 5" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-6.webp", alt: "Empavonados de interior 6" },
+                ],
+            },
+            {
+                title: "EMPAVONADO Exterior",
+                images: [
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-1.webp", alt: "Empavonados de exterior 1" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-2.webp", alt: "Empavonados de exterior 2" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-3.webp", alt: "Empavonados de exterior 3" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-4.webp", alt: "Empavonados de exterior 4" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-5.webp", alt: "Empavonados de exterior 5" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-6.webp", alt: "Empavonados de exterior 6" },
+                ],
+            },
+        ],
+    },
+    {
+        slug: "one-way-vision",
+        titulo: "ONE WAY VISION",
+        descripcion:
+            "Gráficas One Way Vision que combinan privacidad, visibilidad y atractivo visual para tu negocio.",
+        imagenPrincipal: "/img/servicios/portadas/OneWayVision.webp",
+        claim: "Gráficas One Way Vision que combinan privacidad, visibilidad y atractivo visual para tu negocio.",
+        sections: [
+            {
+                title: "One Way vision",
+                images: [
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-1.webp", alt: "Empavonados de interior 1" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-2.webp", alt: "Empavonados de interior 2" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-3.webp", alt: "Empavonados de interior 3" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-4.webp", alt: "Empavonados de interior 4" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-5.webp", alt: "Empavonados de interior 5" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-6.webp", alt: "Empavonados de interior 6" },
+                ],
+            },
+            {
+                title: "EMPAVONADO Exterior",
+                images: [
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-1.webp", alt: "Empavonados de exterior 1" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-2.webp", alt: "Empavonados de exterior 2" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-3.webp", alt: "Empavonados de exterior 3" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-4.webp", alt: "Empavonados de exterior 4" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-5.webp", alt: "Empavonados de exterior 5" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-6.webp", alt: "Empavonados de exterior 6" },
+                ],
+            },
+        ],
+    },
+    {
+        slug: "empavonados",
+        titulo: "EMPAVONADOS",
+        descripcion:
+            "Empavonado para interiores y exteriores que aporta elegancia, privacidad y profesionalismo.",
+        imagenPrincipal: "/img/servicios/portadas/Empavonados.webp",
+        claim: "Empavonado para interiores y exteriores que aporta elegancia, privacidad y profesionalismo.",
+        sections: [
+            {
+                title: "EMPAVONADO Interior",
+                images: [
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-1.webp", alt: "Empavonados de interior 1" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-2.webp", alt: "Empavonados de interior 2" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-3.webp", alt: "Empavonados de interior 3" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-4.webp", alt: "Empavonados de interior 4" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-5.webp", alt: "Empavonados de interior 5" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-6.webp", alt: "Empavonados de interior 6" },
+                ],
+            },
+            {
+                title: "EMPAVONADO Exterior",
+                images: [
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-1.webp", alt: "Empavonados de exterior 1" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-2.webp", alt: "Empavonados de exterior 2" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-3.webp", alt: "Empavonados de exterior 3" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-4.webp", alt: "Empavonados de exterior 4" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-5.webp", alt: "Empavonados de exterior 5" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-6.webp", alt: "Empavonados de exterior 6" },
+                ],
+            },
+        ],
+    },
+    {
+        slug: "rotulacion-vehicular",
+        titulo: "ROTULACIÓN VEHICULAR",
+        descripcion:
+            "Rotulación para vehículos y superficies que destaca tu marca y proyecta profesionalismo.",
+        imagenPrincipal: "/img/servicios/portadas/RotulacionVehicular.webp",
+        claim: "Rotulación para vehículos y superficies que destaca tu marca y proyecta profesionalismo.",
+        sections: [
+            {
+                title: "ROTULACIÓN VEHICULAR Interior",
+                images: [
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularInterior-1.webp", alt: "Rotulación vehicular de interior 1" },
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularInterior-2.webp", alt: "Rotulación vehicular de interior 2" },
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularInterior-3.webp", alt: "Rotulación vehicular de interior 3" },
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularInterior-4.webp", alt: "Rotulación vehicular de interior 4" },
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularInterior-5.webp", alt: "Rotulación vehicular de interior 5" },
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularInterior-6.webp", alt: "Rotulación vehicular de interior 6" },
+                ],
+            },
+            {
+                title: "ROTULACIÓN VEHICULAR Exterior",
+                images: [
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularExterior-1.webp", alt: "Rotulación vehicular de exterior 1" },
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularExterior-2.webp", alt: "Rotulación vehicular de exterior 2" },
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularExterior-3.webp", alt: "Rotulación vehicular de exterior 3" },
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularExterior-4.webp", alt: "Rotulación vehicular de exterior 4" },
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularExterior-5.webp", alt: "Rotulación vehicular de exterior 5" },
+                    { src: "/img/servicios/RotulacionVehicular/RotulacionVehicularExterior-6.webp", alt: "Rotulación vehicular de exterior 6" },
+                ],
+            },
+        ],
+    },
+    {
+        slug: "letras-volumetricas",
+        titulo: "LETRAS VOLUMÉTRICAS",
+        descripcion:
+            "Letras volumétricas para interiores y exteriores que aportan elegancia, privacidad y profesionalismo.",
+        imagenPrincipal: "/img/servicios/portadas/LetrasVolumetricas.webp",
+        claim: "Letras volumétricas para interiores y exteriores que aportan elegancia, privacidad y profesionalismo.",
+        sections: [
+            {
+                title: "Letras volumetricas",
+                images: [
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-1.webp", alt: "Empavonados de interior 1" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-2.webp", alt: "Empavonados de interior 2" },
+                    { src: "/img/servicios/LetrasVolumetricas/LetrasVolumetricasInterior-3.webp", alt: "Letras volumetricas de interior 3" },
+                    { src: "/img/servicios/LetrasVolumetricas/LetrasVolumetricasInterior-4.webp", alt: "Letras volumetricas de interior 4" },
+                    { src: "/img/servicios/LetrasVolumetricas/LetrasVolumetricasInterior-5.webp", alt: "Letras volumetricas de interior 5" },
+                    { src: "/img/servicios/LetrasVolumetricas/LetrasVolumetricasInterior-6.webp", alt: "Letras volumetricas de interior 6" },
+                ],
+            },
+            {
+                title: "Letras volumetricas Exterior",
+                images: [
+                    { src: "/img/servicios/LetrasVolumetricas/LetrasVolumetricasExterior-1.webp", alt: "Letras volumetricas de exterior 1" },
+                    { src: "/img/servicios/LetrasVolumetricas/LetrasVolumetricasExterior-2.webp", alt: "Letras volumetricas de exterior 2" },
+                    { src: "/img/servicios/LetrasVolumetricas/LetrasVolumetricasExterior-3.webp", alt: "Letras volumetricas de exterior 3" },
+                    { src: "/img/servicios/LetrasVolumetricas/LetrasVolumetricasExterior-4.webp", alt: "Letras volumetricas de exterior 4" },
+                    { src: "/img/servicios/LetrasVolumetricas/LetrasVolumetricasExterior-5.webp", alt: "Letras volumetricas de exterior 5" },
+                    { src: "/img/servicios/LetrasVolumetricas/LetrasVolumetricasExterior-6.webp", alt: "Letras volumetricas de exterior 6" },
+                ],
+            },
+        ],
+    },
+    {
+        slug: "impresion-cuatricromia",
+        titulo: "IMPRESIÓN CUATRICROMÍA",
+        descripcion:
+            "Impresión cuatricromía para interiores y exteriores que aporta elegancia, privacidad y profesionalismo.",
+        imagenPrincipal: "/img/servicios/portadas/ImpresionCuatricromia.webp",
+        claim: "Impresión cuatricromía para interiores y exteriores que aporta elegancia, privacidad y profesionalismo.",
+        sections: [
+            {
+                title: "EMPAVONADO Interior",
+                images: [
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-1.webp", alt: "Empavonados de interior 1" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-2.webp", alt: "Empavonados de interior 2" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-3.webp", alt: "Empavonados de interior 3" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-4.webp", alt: "Empavonados de interior 4" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-5.webp", alt: "Empavonados de interior 5" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosInterior-6.webp", alt: "Empavonados de interior 6" },
+                ],
+            },
+            {
+                title: "EMPAVONADO Exterior",
+                images: [
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-1.webp", alt: "Empavonados de exterior 1" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-2.webp", alt: "Empavonados de exterior 2" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-3.webp", alt: "Empavonados de exterior 3" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-4.webp", alt: "Empavonados de exterior 4" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-5.webp", alt: "Empavonados de exterior 5" },
+                    { src: "/img/servicios/Empavonados/EmpavonadosExterior-6.webp", alt: "Empavonados de exterior 6" },
+                ],
+            },
+        ],
+    },
+
+    // ...los otros servicios aquí
 ];

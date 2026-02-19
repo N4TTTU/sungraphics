@@ -1,54 +1,60 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import type { Servicio } from "@/assets/data/servicios";
+import CtaBar from "@/components/CtaBar.astro";
 import { servicios } from "@/assets/data/servicios";
 ---
 
 <Layout>
-    <section class="mx-auto max-w-7xl px-4 py-12">
-        <h1 class="text-3xl font-bold text-gray-900 mb-10 text-center">
-            Nuestros Servicios
-        </h1>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {
-                servicios.map((s: Servicio) => {
-                    const portada =
-                        s.imagenPrincipal ??
-                        s.galeria?.[0] ??
-                        "/img/placeholder.jpg"; // asegúrate de tener este placeholder
-
-                    return (
-                        <article class="group relative rounded-xl overflow-hidden bg-white border shadow-sm hover:shadow-md transition-all">
-                            <img
-                                src={portada}
-                                alt={s.titulo}
-                                class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                loading="lazy"
-                                width="800"
-                                height="600"
-                            />
-                            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                                <h2 class="text-lg font-semibold text-white">
-                                    {s.titulo}
-                                </h2>
-                                {s.categoria && (
-                                    <p class="text-sm text-gray-200">
-                                        {s.categoria}
-                                    </p>
-                                )}
-                            </div>
-
-                            {/* enlace a la ruta dinámica (todo en minúsculas) */}
-                            <a
-                                href={`/servicios/${s.slug}`}
-                                class="absolute inset-0"
-                                aria-label={`Ver servicio ${s.titulo}`}
-                            />
-                        </article>
-                    );
-                })
-            }
+  <section class="bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-10">
+      <!-- Header -->
+      <div class="grid overflow-hidden rounded-md md:grid-cols-2">
+        <div class="bg-orange-500 px-6 py-8 sm:px-10">
+          <h2 class="text-3xl font-extrabold leading-tight text-white">
+            ELEMENTOS<br />PUBLICITARIOS
+          </h2>
         </div>
-    </section>
+
+        <div class="bg-neutral-600 px-6 py-8 sm:px-10">
+          <p class="text-xl leading-relaxed text-white/90">
+            Aquí encontrarás nuestro servicio principal, enfocado en la creación y desarrollo de elementos publicitarios.
+          </p>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {servicios.map((s) => (
+          <a
+            href={`/servicios/${s.slug}/`}
+            class="group block overflow-hidden rounded-md bg-gray-100 shadow-sm"
+            aria-label={s.titulo.replaceAll("\n", " ")}
+          >
+            <div class="relative w-full aspect-[3/2] overflow-hidden">
+              <img
+                src={s.imagenPrincipal}
+                alt={s.titulo.replaceAll("\n", " ")}
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]"
+              />
+
+              <!-- Overlay (OJO: NO autocerrado) -->
+              <div class="absolute inset-0 bg-black/60 transition-colors duration-300 group-hover:bg-black/75"></div>
+
+              <div class="absolute inset-0 flex items-center justify-center px-4 text-center">
+                <h3
+                  class="text-white uppercase tracking-wide font-black text-3xl sm:text-4xl drop-shadow"
+                  style="white-space: pre-line;"
+                >
+                  {s.titulo}
+                </h3>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBar />
 </Layout>

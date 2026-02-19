@@ -1,42 +1,141 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { proyectos } from "@/assets/data/proyectos.ts";
+
+const projects = [
+  {
+    title: "ACONCAGUA",
+    description:
+      "Se realizó la instalación de letras router en la entrada principal del edificio, lo que permitió renovar y embellecer su acceso. Esta intervención aportó una nueva identidad visual, dotando al espacio de un estilo moderno y elegante que no solo realza su presencia arquitectónica, sino que también refuerza la imagen institucional del lugar.",
+    image: "/img/proyectos/Aconcagua.webp",
+    alt: "Proyecto Aconcagua",
+  },
+  {
+    title: "HOTEL SANTA BARBARA",
+    description:
+      "Se llevó a cabo la instalación de un letrero con grabado en madera en la entrada principal, otorgando una identidad cálida y distintiva al acceso del hotel. Además, se implementó un sistema de señaléticas en el interior, diseñado para mejorar la orientación de los visitantes y reforzar la coherencia estética en todos los espacios.",
+    image: "/img/proyectos/HotelSantaBarbara.webp",
+    alt: "Proyecto Hotel Santa Barbara",
+  },
+  {
+    title: "PINGUERAL",
+    description:
+      "Se llevó a cabo la instalación de un letrero con grabado en madera en la entrada principal, otorgando una identidad cálida y distintiva al acceso del hotel. Además, se implementó un sistema de señaléticas en el interior, diseñado para mejorar la orientación de los visitantes y reforzar la coherencia estética en todos los espacios.",
+    image: "/img/proyectos/Pingueral.webp",
+    alt: "Proyecto Pingueral",
+  },
+  {
+    title: "UNIVERSIDAD DEL MAR",
+    description:
+      "Se llevó a cabo la instalación de un letrero con grabado en madera en la entrada principal, otorgando una identidad cálida y distintiva al acceso del hotel. Además, se implementó un sistema de señaléticas en el interior, diseñado para mejorar la orientación de los visitantes y reforzar la coherencia estética en todos los espacios.",
+    image: "/img/proyectos/UniversidadDelMar.webp",
+    alt: "Proyecto Universidad del Mar",
+  },
+  {
+    title: "INMOBILIARIA DHELOS",
+    description:
+      "Se llevó a cabo la instalación de un letrero con grabado en madera en la entrada principal, otorgando una identidad cálida y distintiva al acceso del hotel. Además, se implementó un sistema de señaléticas en el interior, diseñado para mejorar la orientación de los visitantes y reforzar la coherencia estética en todos los espacios.",
+    image: "/img/proyectos/InmobiliariaDhelos.webp",
+    alt: "Proyecto Inmobiliaria DheLos",
+  },
+  {
+    title: "METRO",
+    description:
+      "Se llevó a cabo la instalación de un letrero con grabado en madera en la entrada principal, otorgando una identidad cálida y distintiva al acceso del hotel. Además, se implementó un sistema de señaléticas en el interior, diseñado para mejorar la orientación de los visitantes y reforzar la coherencia estética en todos los espacios.",
+    image: "/img/proyectos/Metro.webp",
+    alt: "Proyecto Metro",
+  },
+  {
+    title: "METRO FERROVIAL",
+    description:
+      "Se llevó a cabo la instalación de un letrero con grabado en madera en la entrada principal, otorgando una identidad cálida y distintiva al acceso del hotel. Además, se implementó un sistema de señaléticas en el interior, diseñado para mejorar la orientación de los visitantes y reforzar la coherencia estética en todos los espacios.",
+    image: "/img/proyectos/MetroFerrovial.webp",
+    alt: "Proyecto Metro Ferrovial",
+  },
+  {
+    title: "SALA CAPACITACION COCA COLA",
+    description:
+      "Se llevó a cabo la instalación de un letrero con grabado en madera en la entrada principal, otorgando una identidad cálida y distintiva al acceso del hotel. Además, se implementó un sistema de señaléticas en el interior, diseñado para mejorar la orientación de los visitantes y reforzar la coherencia estética en todos los espacios.",
+    image: "/img/proyectos/SalaCapacitacionCocaCola.webp",
+    alt: "Proyecto Sala Capacitación Coca Cola",
+  },
+  {
+    title: "MUNICIPALIDAD VIÑA DEL MAR",
+    description:
+      "Se llevó a cabo la instalación de un letrero con grabado en madera en la entrada principal, otorgando una identidad cálida y distintiva al acceso del hotel. Además, se implementó un sistema de señaléticas en el interior, diseñado para mejorar la orientación de los visitantes y reforzar la coherencia estética en todos los espacios.",
+    image: "/img/proyectos/MunicipalidadVinaDelMar.webp",
+    alt: "Proyecto Municipalidad Viña del Mar",
+  },
+  {
+    title: "ANSALDO",
+    description:
+      "Se llevó a cabo la instalación de un letrero con grabado en madera en la entrada principal, otorgando una identidad cálida y distintiva al acceso del hotel. Además, se implementó un sistema de señaléticas en el interior, diseñado para mejorar la orientación de los visitantes y reforzar la coherencia estética en todos los espacios.",
+    image: "/img/proyectos/Ansaldo.webp",
+    alt: "Proyecto Ansaldo",
+  },
+];
 ---
 
+
 <Layout>
-  <section class="mx-auto max-w-7xl px-4 py-10">
-    <h2 class="mb-6 text-2xl font-semibold text-gray-900">
-      Proyectos realizados
-    </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {
-        proyectos.map((p) => (
-          <figure class="group relative overflow-hidden rounded-2xl shadow-sm bg-white">
-            <img
-              src={p.image}
-              alt={p.title}
-              loading="lazy"
-              class="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-            />
 
-            <div class="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10" />
+<section class="bg-white">
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <!-- Header (naranja / gris) -->
+    <div class="grid overflow-hidden rounded-md md:grid-cols-2">
+      <div class="bg-orange-500 px-6 py-8 sm:px-10">
+        <h2 class="text-3xl font-extrabold leading-tight text-white">
+          PROYECTOS<br />
+          IMPORTANTES
+        </h2>
+      </div>
 
-            <figcaption
-              class="absolute inset-x-2 bottom-2 rounded-lg bg-gray-800/80 px-3 py-2 text-[0.95rem] font-semibold text-white tracking-tight
-                   transition-opacity duration-200 group-hover:opacity-0"
-            >
-              {p.title}
-            </figcaption>
-
-            <a
-              href={`/proyectos/${p.slug}`}
-              class="absolute inset-0"
-              aria-label={`Ver proyecto ${p.title}`}
-            />
-          </figure>
-        ))
-      }
+      <div class="bg-neutral-600 px-6 py-8 sm:px-10">
+        <p class="text-sm leading-relaxed text-white/90">
+          Estos son algunos de nuestros proyectos más importantes, los cuales no solo reflejan nuestro
+          crecimiento y experiencia, sino también la confianza que distintos clientes han depositado
+          en nuestro trabajo.
+        </p>
+      </div>
     </div>
-  </section>
+
+    <!-- Lista -->
+    <div class="mt-10 space-y-10">
+      {projects.map((p) => (
+        <article class="relative">
+          <div class="grid gap-6 md:grid-cols-[260px_1fr] md:items-start">
+            {/* Imagen */}
+            <div class="overflow-hidden rounded-md bg-gray-100">
+              <img
+                src={p.image}
+                alt={p.alt}
+                loading="lazy"
+                class="h-44 w-full object-cover transition-transform duration-300 ease-out hover:scale-[1.08] md:h-40"
+              />
+            </div>
+
+            {/* Texto */}
+            <div>
+              <h3 class="text-xl font-extrabold tracking-wide text-neutral-700">
+                {p.title}
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-neutral-600">
+                {p.description}
+              </p>
+            </div>
+          </div>
+
+          <!-- Línea naranja con puntas (como la imagen) -->
+          <div class="mt-6 flex items-center justify-center">
+            <div class="relative h-[2px] w-full bg-orange-500">
+              <span class="absolute -left-1 top-1/2 h-0 w-0 -translate-y-1/2 border-y-[6px] border-l-0 border-r-[10px] border-y-transparent border-r-orange-500"></span>
+              <span class="absolute -right-1 top-1/2 h-0 w-0 -translate-y-1/2 border-y-[6px] border-r-0 border-l-[10px] border-y-transparent border-l-orange-500"></span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
 </Layout>

@@ -1,65 +1,70 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import type { Servicio } from "@/assets/data/servicios";
+import CtaBar from "@/components/CtaBar.astro";
 import { servicios } from "@/assets/data/servicios";
 
-// Rutas estáticas para prerender
-export async function getStaticPaths() {
+export function getStaticPaths() {
     return servicios.map((s) => ({
         params: { slug: s.slug },
         props: { servicio: s },
     }));
 }
 
-const { servicio } = Astro.props as { servicio: Servicio };
-
-// Fallback de portada
-const portada =
-    servicio.imagenPrincipal ?? servicio.galeria?.[0] ?? "/img/placeholder.jpg";
+const { servicio } = Astro.props;
 ---
 
 <Layout>
-    <section class="container mx-auto px-4 py-12">
-        <header class="mb-8">
-            <h1 class="text-3xl font-bold mb-3">{servicio.titulo}</h1>
+    <section class="bg-white">
+        <div class="mx-auto max-w-6xl px-4 py-10">
+            <!-- Header (naranja / gris) -->
+            <div class="grid overflow-hidden rounded-md md:grid-cols-2">
+                <div class="bg-orange-500 px-6 py-8 sm:px-10">
+                    <h1
+                        class="text-3xl sm:text-4xl font-extrabold leading-tight text-white uppercase"
+                        style="white-space: pre-line;"
+                    >
+                        {servicio.titulo}
+                    </h1>
+                </div>
+
+                <div class="bg-neutral-600 px-6 py-8 sm:px-10">
+                    <p
+                        class="text-base sm:text-lg leading-relaxed text-white/90"
+                    >
+                        {servicio.claim}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Secciones de imágenes (UNA SOLA VEZ) -->
             {
-                servicio.descripcion && (
-                    <p class="text-gray-600">{servicio.descripcion}</p>
-                )
-            }
-        </header>
+                servicio.sections?.length ? (
+                    <div class="mt-12 space-y-14">
+                        {servicio.sections.map((sec) => (
+                            <section>
+                                <h2 class="text-center text-xl sm:text-2xl font-extrabold text-neutral-700 tracking-wide uppercase">
+                                    {sec.title}
+                                </h2>
 
-        {/* Portada */}
-        <figure class="mb-10">
-            <img
-                src={portada}
-                alt={`Portada de ${servicio.titulo}`}
-                class="w-full max-h-[480px] object-cover rounded-xl shadow-sm"
-                loading="eager"
-                width="1200"
-                height="800"
-            />
-        </figure>
-
-        {/* Galería (si hay) */}
-        {
-            servicio.galeria.length > 0 && (
-                <section class="mb-12">
-                    <h2 class="text-2xl font-semibold mb-4">Galería</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        {servicio.galeria.map((img: string, i: number) => (
-                            <img
-                                src={img}
-                                alt={`${servicio.titulo} ${i + 1}`}
-                                class="rounded-xl shadow-sm hover:shadow-lg transition-transform duration-300 hover:scale-105"
-                                loading="lazy"
-                                width="800"
-                                height="600"
-                            />
+                                <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
+                                    {sec.images.map((img) => (
+                                        <div class="overflow-hidden rounded-md bg-gray-100">
+                                            <img
+                                                src={img.src}
+                                                alt={img.alt ?? sec.title}
+                                                loading="lazy"
+                                                class="h-40 w-full object-cover transition-transform duration-300 ease-out hover:scale-[1.06]"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
                         ))}
                     </div>
-                </section>
-            )
-        }
+                ) : null
+            }
+        </div>
     </section>
+
+    <CtaBar />
 </Layout>

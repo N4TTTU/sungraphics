@@ -2,6 +2,7 @@
 import NosotrosProveedores from "../components/NosotrosProveedores.astro";
 import Layout from "../layouts/Layout.astro";
 import CardHero from "../components/Nosotros/CardHero.astro";
+import Infraestructura from "@/components/Nosotros/Infraestructura.astro";
 ---
 
 <Layout>
@@ -10,7 +11,7 @@ import CardHero from "../components/Nosotros/CardHero.astro";
             <h3 class="uppercase tx-enun sm:tx-enun-sm text-[#515151] pt-10">
                 Nosotros
             </h3>
-            <p class="text-[#FD9800] tx-s">
+            <p class="text-orange-500 tx-s">
                 Nos sustentamos en cuatro pilares fundamentales:
             </p>
         </div>
@@ -84,7 +85,7 @@ import CardHero from "../components/Nosotros/CardHero.astro";
                                 class="hidden absolute top-0 end-0 translate-x-20 md:block lg:translate-x-20"
                             >
                                 <svg
-                                    class="w-16 h-auto text-[#FD9800]"
+                                    class="w-16 h-auto text-orange-500"
                                     width="121"
                                     height="135"
                                     viewBox="0 0 121 135"
@@ -121,7 +122,7 @@ import CardHero from "../components/Nosotros/CardHero.astro";
         </div>
     </section>
 
-    <section>
+    <!-- <section>
         <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
             <div class="sm:w-1/2 xl:w-1/3 mx-auto text-center mb-6">
                 <h2
@@ -130,108 +131,9 @@ import CardHero from "../components/Nosotros/CardHero.astro";
                     Nuestros colaboradores
                 </h2>
             </div>
-            <!-- Scroll proveedores -->
             <NosotrosProveedores />
         </div>
-    </section>
+    </section> -->
 
-    <section class="pb-30 pt-15">
-        <div>
-            <div class="text-center">
-                <h2
-                    class="uppercase tx-enun sm:tx-enun-sm text-[#515151] pt-10"
-                >
-                    Nuestro equipo
-                </h2>
-                <p
-                    class="text-[#515151] tx-s sm:max-w-[950px] text-center mx-auto pb-10"
-                >
-                    Somos un equipo de profesionales que disfrutamos lo que
-                    hacemos. Cada proyecto es un desafío para brindar la mejor
-                    experiencia a nuestros clientes.
-                </p>
-            </div>
-
-            <div
-                class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto"
-            >
-                <div class="max-w-4xl mx-auto">
-                    <!-- Grid -->
-                    <div class="grid md:grid-cols-2 gap-6 lg:gap-12">
-                        <div class="space-y-6 lg:space-y-10">
-                            <div class="flex gap-x-5 sm:gap-x-8">
-                                <img src="/icon/usicon.svg" alt="" />
-                                <div class="grow">
-                                    <h2
-                                        class="tx-m sm:text-lg font-semibold text-[#515151]"
-                                    >
-                                        Sandra lillo
-                                    </h2>
-                                    <p class="mt-1 text-gray-600">
-                                        Directora de arte <br />
-                                        Instituto AIEP de Valparaiso 2020/2025
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-x-5 sm:gap-x-8">
-                                <img src="/icon/usicon.svg" alt="" />
-                                <div class="grow">
-                                    <h2
-                                        class="tx-m sm:text-lg font-semibold text-[#515151]"
-                                    >
-                                        Enzo Pechunante
-                                    </h2>
-                                    <p class="mt-1 text-gray-600">
-                                        Diseñador gráfico <br />
-                                        Instituto AIEP de Valparaiso 2020/2025
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="space-y-6 lg:space-y-10">
-                            <!-- Icon Block -->
-
-                            <div class="flex gap-x-5 sm:gap-x-8">
-                                <img src="/icon/usicon.svg" alt="" />
-                                <div class="grow">
-                                    <h2
-                                        class="tx-m sm:text-lg font-semibold text-[#515151]"
-                                    >
-                                        Franchesco Totti
-                                    </h2>
-                                    <p class="mt-1 text-gray-600">
-                                        Diseñador gráfico <br />
-                                        Instituto AIEP de Valparaiso 2020/2025
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="flex gap-x-5 sm:gap-x-8">
-                                <img src="/icon/usicon.svg" alt="" />
-                                <div class="grow">
-                                    <h2
-                                        class="tx-m sm:text-lg font-semibold text-[#515151]"
-                                    >
-                                        Paula di marco
-                                    </h2>
-                                    <p class="mt-1 text-gray-600">
-                                        Directora de arte <br />
-                                        Instituto AIEP de Valparaiso 2020/2025
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- End Icon Block -->
-                        </div>
-                        <!-- End Col -->
-                    </div>
-                    <!-- End Grid -->
-                </div>
-            </div>
-            <!-- End Icon Blocks -->
-        </div>
-    </section>
+    <Infraestructura />
 </Layout>
-
